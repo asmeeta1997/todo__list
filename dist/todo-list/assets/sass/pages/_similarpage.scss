@@ -1,0 +1,84 @@
+.main_section {
+  background-color: $background-color-all;
+  min-height: 100vh;
+  font-family: Roboto;
+
+  .main__todo__div {
+    display: flex;
+    justify-content: center;
+    padding: 5% 0;
+
+    .inner__div__todo {
+      background-color: $white;
+      padding: 20px 40px;
+      border-radius: 14px;
+
+      .error__in__validation {
+        color: $color-primary;
+        margin: 5px 0 0;
+      }
+
+      .form-control.ng-touched.ng-invalid {
+        border: 1px solid $color-primary;
+      }
+
+      .form-control.ng-touched.ng-valid {
+        border: 1px solid $color-accent-33;
+      }
+
+      h2 {
+        color: $color-primary;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      p {
+        margin-bottom: 20px;
+        color: $color-accent-2;
+        font-size: 14px;
+      }
+
+      .responsive__icon {
+        position: relative;
+
+        .form__css {
+          padding: 3px 27px;
+          line-height: 2;
+        }
+
+        .error__in__validation_form {
+          border: 1px solid $color-primary;
+        }
+
+        .main_icon_form_inner {
+          position: absolute;
+          top: 13px;
+          left: 10px;
+          color: $color-accent-2;
+          font-size: 13px;
+        }
+      }
+
+      .forgot_password_css_inner {
+        display: flex;
+        justify-content: flex-end;
+
+        a {
+          color: $color-primary;
+        }
+      }
+
+      .create__account_css {
+        margin-top: 20px;
+
+        p {
+          a {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+
+  }
+}

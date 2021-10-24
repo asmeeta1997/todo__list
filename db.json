@@ -29,7 +29,16 @@
       "date": "2021-10-20"
     }
   ],
-  "signupUsers": [],
+  "signupUsers": [
+    {
+      "fullname": "Asmita Karki",
+      "email": "karkiasasb@gmail.com",
+      "date": "2021-10-28",
+      "phonenumber": 12344232,
+      "password": "kasalshas",
+      "id": 1
+    }
+  ],
   "profile": {
     "name": "typicode"
   }
