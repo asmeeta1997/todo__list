@@ -30,7 +30,7 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.passwordforgot.invalid) {
       return;
     }
-    alert("Signup Succesfully");
+    alert("Email Send Succesfully");
     this.passwordforgot.reset();
 
   }
