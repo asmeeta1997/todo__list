@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,12 +23,20 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private router : Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router : Router
   ) { }
 
   get all() {
     return this.loginForm.controls
+  }
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: new FormControl("", [Validators.required, Validators.email,Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]),
+      password: new FormControl("", [Validators.required, Validators.minLength(6)])
+    })
   }
 
   onSubmit(form:NgForm) {
@@ -36,14 +45,10 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+    this.router.navigate(['home'])
     this.loginForm.reset();
   }
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: new FormControl("", [Validators.required, Validators.email,Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]),
-      password: new FormControl("", [Validators.required, Validators.minLength(6)])
-    })
-  }
+ 
 
   
 }

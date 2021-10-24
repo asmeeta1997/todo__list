@@ -14,6 +14,9 @@ export class DashboardComponent implements OnInit {
   todaytask = "../../../assets/images/todo-tasks.png";
   upcommingtasks = "../../../assets/images/upcomingtasks.png";
   overduetasks = "../../../assets/images/overduetasks.png";
+  todaytas="todays task image";
+  upcommingtask="upcomming image";
+  overduetask="ovweduetask image"
 
   formValue !: FormGroup;
   taskModelObj: TaskModel = new TaskModel();
