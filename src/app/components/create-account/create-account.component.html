@@ -1,0 +1,116 @@
+<div class="main_section">
+  <div class="container">
+    <div class="main__todo__div">
+      <div class="inner__div__todo">
+        <div class="d-flex align-items-center">
+          <div class="me-3">
+            <div>
+              <h2 class="font__semibold">TODO APP</h2>
+              <h4 class="font__semibold">Let's get started</h4>
+              <p>Create an account to get started with TODO APP</p>
+            </div>
+            <div>
+              <form #createAcc="ngForm" (ngSubmit)="onSubmit(createAcc.value)" [formGroup]="createAccount" name="createAccount">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <div class="responsive__icon">
+                    <input
+                      type="text"
+                      class="form-control form__css"
+                      placeholder="Enter your name"
+                      required
+                    />
+                    <i class="fas fa-user main_icon_form_inner"></i>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="gender" class="form-label">Gender</label> <br />
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="Radio1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="Radio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="Radio2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="Radio2">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="Radio3"
+                      value="option3"
+                    />
+                    <label class="form-check-label" for="Radio3">Others</label>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="date" class="form-label">DOB</label>
+                  <div class="responsive__icon">
+                    <input
+                      type="date"
+                      class="form-control form__css"
+                      placeholder="Enter your date"
+                      required
+                    />
+                    <!-- <i class="fas fa-calendar-week main_icon_form_inner"></i> -->
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="number" class="form-label">Phone</label>
+                  <div class="responsive__icon">
+                    <input
+                      type="number"
+                      class="form-control form__css"
+                      placeholder="Enter your number"
+                      required
+                    />
+                    <i class="fas fa-phone-alt main_icon_form_inner"></i>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <div class="responsive__icon">
+                    <input
+                      type="email"
+                      class="form-control form__css"
+                      placeholder="Enter your email address"
+                      required
+                    />
+                    <i class="fas fa-envelope main_icon_form_inner"></i>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-danger w-100"
+                   
+                >
+                  Next
+                </button>
+              </form>
+            </div>
+          </div>
+          <div>
+            <img
+              src="{{ createImage }}"
+              alt="{{ createImg }}"
+              class="img-fluid d-none d-lg-block"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

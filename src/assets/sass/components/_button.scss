@@ -1,0 +1,127 @@
+.btn {
+    background-position: center !important;
+    transition: background 0.5s !important;
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+@mixin btn($transform:uppercase, $radius:26px, $height:55px, $font-size:15px, $font-weight:500) {
+    text-transform: $transform;
+    border-radius: $radius;
+    height: $height;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    @include sm {
+        font-size: 12px !important;
+        img {
+            width: 10px;
+        }
+    }
+}
+
+@mixin btn__red {
+    background-color: $color-primary;
+    color: $white !important;
+    @include btn();
+    &:hover {
+        background-color: darken($color-primary, 10%);
+    }
+    @include rwd(1399) {
+        height: 50px;
+        font-size: 13px;
+    }
+}
+@mixin btn__green{
+    background-color: $color-accent-6;
+    color: $white !important;
+    @include btn();
+    &:hover {
+        background-color: darken($color-accent-6, 10%);
+    }
+    @include rwd(1399) {
+        height: 50px;
+        font-size: 13px;
+    }
+}
+@mixin btn__grey {
+    background-color: $color-accent-17;
+    color: $white !important;
+    @include btn();
+    &:hover {
+        background-color: darken($color-accent-17, 10%);
+    }
+    @include rwd(1399) {
+        height: 50px;
+    }
+}
+
+@mixin btn__transpatent {
+    background-color: transparent;
+    color: $white;
+    @include btn();
+    border: 3px solid rgba($white, 0.3);
+    &:hover {
+        background-color: rgba($white, .3);
+    }
+    @include rwd(1399) {
+        height: 50px;
+    }
+}
+
+@mixin btn__transpatent__red {
+    background-color: transparent;
+    color: $color-primary;
+    @include btn();
+    border: 1px solid rgba($color-primary, 0.3);
+    &:hover {
+        background-color: rgba($white, .8);
+    }
+    @include rwd(1399) {
+        height: 50px;
+    }
+}
+
+@mixin btn__blue {
+    background-color: $color-accent-23;
+    color: $white;
+    @include btn();
+    border: 1px solid rgba($color-accent-23, 0.3);
+    border-radius: 10px;
+    &:hover {
+        background-color: rgba($color-accent-23, .8);
+    }
+    @include rwd(1399) {
+        height: 50px;
+    }
+}
+
+@mixin btn__transpatent__grey {
+    background-color: transparent;
+    color: $color-accent-11;
+    @include btn();
+    border: 1px solid $color-accent-16;
+    &:hover {
+        background-color: rgba($white, .8);
+    }
+    @include rwd(1399) {
+        height: 50px;
+    }
+}
+
+@mixin btn__white {
+    background-color: $white;
+    color: $color-primary;
+    width: 140px;
+    border: 1px solid $color-accent-15;
+    @include btn(capitalize, 22px, 44px, 14px, 700);
+    border-radius: 22px;
+    font-size: 14px;
+    font-weight: 700;
+    &:hover {
+        background-color: darken($white, 10%);
+    }
+    @include sm {
+        font-size: 14px !important;
+    }
+}

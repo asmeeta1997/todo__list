@@ -1,0 +1,22 @@
+@mixin flex__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin line-clamp($lines) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+@mixin text__discription($font-size){
+    color: $color-accent-3;
+    font-size: $font-size;
+    text-align: justify;
+    @include rwd(1399){
+        font-size: 14px;
+    }
+    @include md{
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,97 @@
+<div class="main_section">
+  <div class="container">
+    <div class="main__todo__div">
+      <div class="inner__div__todo">
+        <div class="d-flex align-items-center">
+          <div class="me-3">
+            <div>
+              <h2 class="font__semibold">{{ title }}</h2>
+              <h4 class="font__semibold">Login to your account</h4>
+              <p>Welcome back! Please login to your account</p>
+            </div>
+            <div>
+              <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)" [formGroup]="loginForm" name="loginForm">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <div class="responsive__icon">
+                    <input
+                      formControlName="email"
+                      name="email"
+                      type="email"
+                      class="form-control form__css"
+                      id="email"
+                      placeholder="Enter your email address"
+                      required
+                    />
+                    <i class="fas fa-envelope main_icon_form_inner"></i>
+                  </div>
+                  <div *ngIf="submit && all.email.errors" >
+                    <p
+                      *ngIf="all.email.errors.required"  
+                      class="error__in__validation"
+                    >
+                      Email is required
+                    </p>
+
+                    <p *ngIf="all.email.errors.pattern" class="error__in__validation">Email must be a valid</p>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <div class="responsive__icon">
+                    <input
+                      formControlName="password"
+                      name="password"
+                      type="password"
+                      class="form-control form__css"
+                      placeholder="Enter your Password"
+                      required
+                    />
+                    <i class="fas fa-lock main_icon_form_inner"></i>
+                  </div>
+                  <div *ngIf="submit && all.password.errors">
+                    <p
+                      *ngIf="all.password.errors.required"
+                      class="error__in__validation"
+                    >
+                      Password is Required
+                    </p>
+                    <p
+                      *ngIf="all.password.errors.minlength"
+                      class="error__in__validation"
+                    >
+                      Password Atleast 6 letter
+                    </p>
+                  </div>
+                </div>
+                <div class="forgot_password_css_inner">
+                  <p><a routerLink="/forget-password">Forgot Password?</a></p>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-danger w-100" 
+                  [disabled]="!authForm.valid"
+                >
+                  Login
+                </button>
+                <div class="create__account_css">
+                  <p>
+                    Not registered yet?
+                    <a routerLink="/create-account">Create a new account</a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div>
+            <img
+              src="{{ loginImage }}"
+              alt="{{ loginimagealt }}"
+              class="img-fluid d-none d-lg-block"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
