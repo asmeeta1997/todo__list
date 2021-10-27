@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -14,8 +15,13 @@ export class ForgotPasswordComponent implements OnInit {
 
   public passwordforgot!: FormGroup;
 
+  get all() {
+    return this.passwordforgot.controls
+  }
+
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.passwordforgot.invalid) {
       return;
     }
-    alert("Email Send Succesfully");
+    this.router.navigate(['reset-password'])
     this.passwordforgot.reset();
 
   }

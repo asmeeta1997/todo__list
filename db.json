@@ -1,53 +1,95 @@
 {
-  "posts": [
+  "taskDetail": [
     {
-      "id": 13,
-      "taskname": "heheh",
-      "chooselist": "College",
-      "choosepriority": "High",
+      "id": 3,
+      "taskname": "demo",
+      "chooselist": "work",
+      "choosepriority": "Medium",
+      "date": "2021-10-21"
+    },
+    {
+      "id": 4,
+      "taskname": "shooping",
+      "chooselist": "work",
+      "choosepriority": "Low",
       "date": "2021-10-15"
     },
     {
-      "id": 14,
-      "taskname": "demo",
-      "chooselist": "College",
-      "choosepriority": "High",
-      "date": "2021-10-13"
-    },
-    {
-      "id": 15,
-      "taskname": "this",
-      "chooselist": "College work",
-      "choosepriority": "Medium",
-      "date": "2021-10-29"
-    },
-    {
-      "id": 17,
-      "taskname": "lol",
-      "chooselist": "Tour",
-      "choosepriority": "High",
+      "id": 5,
+      "taskname": "asasa",
+      "chooselist": "shopping",
+      "choosepriority": "Low",
       "date": "2021-10-20"
     }
   ],
-  "signupUsers": [
+  "signUp": [
     {
-      "fullname": "Asmita Karki",
-      "email": "karkiasasb@gmail.com",
-      "date": "2021-10-28",
-      "phonenumber": 12344232,
-      "password": "kasalshas",
+      "fullname": "asmita",
+      "email": "admin@diseasepredictor.com",
+      "date": "2021-10-16",
+      "phonenumber": 977985684100,
       "id": 1
     },
     {
-      "fullname": "Asmita Karki",
-      "email": "kkkk@gmail.com",
-      "date": "2021-10-14",
-      "phonenumber": 164546461352,
-      "password": "jkbkjvkh",
+      "password": "asasaaa",
+      "confirmpassword": "asasaaa",
       "id": 2
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "login": [
+    {
+      "email": "cebim30436@shensufu.com",
+      "password": "iahdlusagsa",
+      "id": 1
+    },
+    {
+      "email": "dodori6013@tst999.com",
+      "password": "asasasas",
+      "id": 2
+    },
+    {
+      "email": "dodori6013@tst999.com",
+      "password": "iaihbslahs",
+      "id": 3
+    },
+    {
+      "email": "karkiasmita3@gmail.com",
+      "password": "12232323232",
+      "id": 4
+    },
+    {
+      "email": "lsnlaa@gmail.com",
+      "password": "aslkalhsa",
+      "id": 5
+    }
+  ],
+  "listNames": [
+    {
+      "id": 1,
+      "listname": "work"
+    },
+    {
+      "id": 2,
+      "listname": "shopping"
+    },
+    {
+      "id": 3,
+      "listname": "try"
+    },
+    {
+      "id": 4,
+      "listname": "haul"
+    },
+    {
+      "id": 5,
+      "listname": "lol"
+    }
+  ],
+  "resetpassword": [
+    {
+      "password": "12345678",
+      "confirmpassword": "12345678",
+      "id": 1
+    }
+  ]
 }

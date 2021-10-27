@@ -21,16 +21,26 @@
           id="navbarSupportedContent"
         >
           <div class="d-flex">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-baseline">
+            <ul
+              class="
+                navbar-nav
+                me-auto
+                mb-2 mb-lg-0
+                d-flex
+                align-items-baseline
+              "
+            >
               <li class="nav-item">
                 <div class="inner__section__task_list">
-                <a class="nav-link active" aria-current="page" href="#"><p class="custom_padding">AK</p></a>
+                  <a class="nav-link active" aria-current="page" href="#">
+                    <p class="custom_padding">AK</p>
+                  </a>
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/"
-                  ><i class="fas fa-sign-out-alt me-1"></i>Logout</a
-                >
+                <button class="nav-link logout__button__demo" routerLink="/login">
+                  <i class="fas fa-sign-out-alt me-1"></i>Logout
+                </button>
               </li>
             </ul>
           </div>
@@ -42,7 +52,7 @@
     <div class="container">
       <div class="d-flex justify-content-between mt-4">
         <div class="inner__home__first_part">
-          <h5>24 February 2021</h5>
+          <h3>{{ currentDate | date }}</h3>
           <p>
             You keep up the place to accomplish your task in time
             <i class="far fa-clock"></i>
@@ -93,6 +103,7 @@
                           id="taskname"
                           placeholder="Enter task name"
                           formControlName="taskname"
+                          required
                         />
                       </div>
                       <div class="row">
@@ -106,24 +117,33 @@
                               id="chooselist"
                               aria-label="Default select example"
                               formControlName="chooselist"
+                              name="chooselist"
+                              required
                             >
-                              <option *ngFor="let list of listNames">{{list.name}}</option>
-                              
+                              <option selected hidden>Choose list name</option>
+                              <option *ngFor="let list of listData">
+                                {{ list.listname }}
+                              </option>
                             </select>
                           </div>
                         </div>
                         <div class="col-lg-4">
                           <div>
-                            <label for="choosepriority" class="form-label"
-                              >Choose priority</label
+                            <label for="choosepriority" class="form-label">
+                              Choose priority</label
                             >
                             <select
                               class="form-select"
                               id="choosepriority"
                               aria-label="Default select example"
                               formControlName="choosepriority"
+                              name="choosepriority"
+                              required
                             >
-                              <option *ngFor="let list of priorityList">{{list.name}}</option>
+                              <option selected hidden>Choose priority</option>
+                              <option *ngFor="let list of priorityList">
+                                {{ list.name }}
+                              </option>
                             </select>
                           </div>
                         </div>
@@ -138,6 +158,7 @@
                               id="dateandtime"
                               placeholder="Choose date"
                               formControlName="date"
+                              required
                             />
                           </div>
                         </div>
@@ -172,7 +193,7 @@
   <section>
     <div class="container">
       <div>
-        <h2>Overview</h2>
+        <h2 class="m-0">Overview</h2>
       </div>
       <div class="row">
         <div class="col-lg-4">
@@ -234,7 +255,7 @@
           <div class="table-responsive">
             <table class="table">
               <tbody>
-                <tr *ngFor="let row of taskData">
+                <tr *ngFor="let row of taskData; let i = index">
                   <td>
                     <div class="form-check">
                       <input
@@ -247,12 +268,23 @@
                       <label class="form-check-label" for="flexCheckChecked">
                         <div class="text-capitalize">{{ row.taskname }}</div>
                         <div class="inner__checkbox_chooselist">
-                          <p>{{row.chooselist}}</p>
+                          <p>{{ row.chooselist }}</p>
                         </div>
                       </label>
                     </div>
                   </td>
-                  <td><div class="priority__custom_css">{{ row.choosepriority }}</div></td>
+                  <td>
+                    <div
+                      class="priority__custom_css"
+                      [ngClass]="{
+                        my_class1: i === 0,
+                        my_class2: i === 1,
+                        my_class3: i === 2
+                      }"
+                    >
+                      {{ row.choosepriority }}
+                    </div>
+                  </td>
                   <!-- <td>
               <button class="btn btn-info">Edit</button>
               <button class="btn btn-danger mx-3" (click)="deleteTask(row.id)">Delete</button>
@@ -276,7 +308,7 @@
             >
               Create new List
             </button>
-  
+
             <!-- Modal -->
             <div
               class="modal fade"
@@ -298,18 +330,21 @@
                       aria-label="Close"
                     ></button>
                   </div>
-                  <form [formGroup]="formValue">
+                  <form [formGroup]="formList">
                     <div class="modal-body">
                       <div>
                         <div class="mb-3">
-                          <label for="taskname" class="form-label"
+                          <label for="listname" class="form-label"
                             >List name</label
                           >
                           <input
                             type="text"
                             class="form-control"
                             id="listname"
-                            placeholder="Enter task name"
+                            placeholder="Enter list name"
+                            formControlName="listname"
+                            name="listname"
+                            required
                           />
                         </div>
                       </div>
@@ -319,13 +354,14 @@
                         type="button"
                         class="btn btn-outline-secondary"
                         data-bs-dismiss="modal"
-                        id="cancel"
+                        id="close"
                       >
                         Cancel
                       </button>
                       <button
                         type="button"
                         class="btn btn-danger"
+                        (click)="postListnameDetails()"
                       >
                         Add task
                       </button>
@@ -337,35 +373,56 @@
           </div>
         </div>
         <div class="main__table__inner__dashboard">
-          <div class="table-responsive">
-            <table class="table">
-              <tbody>
-                <tr *ngFor="let row of taskData">
-                  <td>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckChecked2"
-                      />
-                      <label class="form-check-label" for="flexCheckChecked2">
-                        <div class="text-capitalize">{{ row.taskname }}</div>
-                        <div class="inner__checkbox_chooselist">
-                          <p>{{row.chooselist}}</p>
-                        </div>
-                      </label>
+          <div *ngFor="let list of listData">
+            <mat-accordion>
+              <mat-expansion-panel class="inner__expansion__accordion">
+                <mat-expansion-panel-header class="inner__header__accordion">
+                  <mat-panel-title>
+                    <div>
+                      <p>{{ list.listname }}</p>
                     </div>
-                  </td>
-                  <td><div class="priority__custom_css">{{ row.choosepriority }}</div></td>
-                  <td><div class="priority__custom_css">{{row.date}}</div></td>
-                  <!-- <td>
-              <button class="btn btn-info">Edit</button>
-              <button class="btn btn-danger mx-3" (click)="deleteTask(row.id)">Delete</button>
-            </td> -->
-                </tr>
-              </tbody>
-            </table>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="main__table__inner__dashboard" *ngFor="let row of taskData">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                value=""
+                                id="flexCheckChecked2"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexCheckChecked2"
+                              >
+                                <div class="text-capitalize">
+                                  {{ row.taskname }}
+                                </div>
+                              </label>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="priority__custom_css">
+                              {{ row.choosepriority }}
+                            </div>
+                          </td>
+                          <td>
+                            <div class="priority__custom_css">
+                              {{ row.date }}
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
         </div>
       </div>

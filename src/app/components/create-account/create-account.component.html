@@ -5,8 +5,8 @@
         <div class="d-flex align-items-center">
           <div class="me-3">
             <div>
-              <h2 class="font__semibold">TODO APP</h2>
-              <h4 class="font__semibold">Let's get started</h4>
+              <h2 class="font__semibold family-auto m-0">TODO APP</h2>
+              <h4 class="font__semibold mt-2">Let's get started</h4>
               <p>Create an account to get started with TODO APP</p>
             </div>
             <div>
@@ -19,9 +19,24 @@
                       class="form-control form__css"
                       placeholder="Enter your full name"
                       formControlName="fullname"
+                      name="fullname"
                       required
                     />
                     <i class="fas fa-user main_icon_form_inner"></i>
+                  </div>
+                  <div *ngIf="submit && all.fullname.errors">
+                    <p
+                      *ngIf="all.fullname.errors.required"
+                      class="error__in__validation"
+                    >
+                      Fullname is Required
+                    </p>
+                    <p
+                      *ngIf="all.fullname.errors.minlength"
+                      class="error__in__validation"
+                    >
+                      Name shoule be more than 4 letters
+                    </p>
                   </div>
                 </div>
                 <div class="mb-3">
@@ -65,6 +80,7 @@
                       class="form-control form__css"
                       placeholder="Enter your date"
                       formControlName="date"
+                      name="date"
                       required
                     />
                     <!-- <i class="fas fa-calendar-week main_icon_form_inner"></i> -->
@@ -78,9 +94,24 @@
                       class="form-control form__css"
                       placeholder="Enter your number"
                       formControlName="phonenumber"
+                      name="phonenumber"
                       required
                     />
                     <i class="fas fa-phone-alt main_icon_form_inner"></i>
+                  </div>
+                  <div *ngIf="submit && all.phonenumber.errors">
+                    <p
+                      *ngIf="all.phonenumber.errors.required"
+                      class="error__in__validation"
+                    >
+                      Phonenumber is Required
+                    </p>
+                    <p
+                      *ngIf="all.phonenumber.errors.pattern"
+                      class="error__in__validation"
+                    >
+                    Invalid phone number.
+                    </p>
                   </div>
                 </div>
                 <div class="mb-3">
@@ -91,44 +122,24 @@
                       class="form-control form__css"
                       placeholder="Enter your email address"
                       formControlName="email"
+                      name="email"
                       required
                     />
                     <i class="fas fa-envelope main_icon_form_inner"></i>
                   </div>
-                </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <div class="responsive__icon">
-                    <input
-                      formControlName="password"
-                      name="password"
-                      type="password"
-                      class="form-control form__css"
-                      placeholder="Enter your Password"
-                      required
-                    />
-                    <i class="fas fa-lock main_icon_form_inner"></i>
-                  </div>
-                  <div *ngIf="submit && all.password.errors">
+                  <div *ngIf="submit && all.email.errors" >
                     <p
-                      *ngIf="all.password.errors.required"
+                      *ngIf="all.email.errors.required"  
                       class="error__in__validation"
                     >
-                      Password is Required
+                      Email is required
                     </p>
-                    <p
-                      *ngIf="all.password.errors.minlength"
-                      class="error__in__validation"
-                    >
-                      Password Atleast 6 letter
-                    </p>
+                    <p *ngIf="all.email.errors.pattern" class="error__in__validation">Email must be a valid</p>
                   </div>
                 </div>
                 <button
                   type="submit"
-                  class="btn btn-danger w-100"
-                  [disabled]="!accCreate.valid"
-                   
+                  class="btn btn-danger w-100"          
                 >
                   Next
                 </button>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr'
 
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   title = 'Todo App';
   loginImage = "../../../assets/images/login.png";
   loginimagealt = 'Login image';
-  loginForm !: FormGroup;
+  public loginForm !: FormGroup;
   submit: boolean = false;
   isLoginMode = true;
 
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private router : Router
+    private router : Router,
+    private toastr: ToastrService
   ) { }
 
   get all() {
@@ -45,8 +47,16 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.router.navigate(['home'])
-    this.loginForm.reset();
+    this.http.post<any>("http://localhost:3000/login", this.loginForm.value)
+      .subscribe(res =>{
+      this.toastr.success('Login Successfully');
+      this.router.navigate(['home'])
+      this.loginForm.reset();
+    }, err=>{
+      this.toastr.error('Something went wrong', 'Main error',{
+        timeOut: 3000,
+      });
+    })
   }
  
 

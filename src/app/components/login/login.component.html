@@ -5,15 +5,15 @@
         <div class="d-flex align-items-center">
           <div class="me-3">
             <div>
-              <h2 class="font__semibold">{{ title }}</h2>
-              <h4 class="font__semibold">Login to your account</h4>
+              <h2 class="font__semibold family-auto m-0">{{ title }}</h2>
+              <h4 class="font__semibold mt-2">Login to your account</h4>
               <p>Welcome back! Please login to your account</p>
             </div>
             <div>
               <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)" [formGroup]="loginForm" name="loginForm">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email address</label>
-                  <div class="responsive__icon">
+                  <div class="responsive__icon" >
                     <input
                       formControlName="email"
                       name="email"
@@ -45,6 +45,7 @@
                       type="password"
                       class="form-control form__css"
                       placeholder="Enter your Password"
+                      id="password"
                       required
                     />
                     <i class="fas fa-lock main_icon_form_inner"></i>
@@ -69,8 +70,7 @@
                 </div>
                 <button
                   type="submit"
-                  class="btn btn-danger w-100" 
-                  [disabled]="!authForm.valid"
+                  class="btn btn-danger w-100"
                 >
                   Login
                 </button>

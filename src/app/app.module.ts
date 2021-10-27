@@ -9,7 +9,13 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { SetpasswordComponent } from './components/setpassword/setpassword.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +23,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LoginComponent,
     ForgotPasswordComponent,
     CreateAccountComponent,
-    DashboardComponent 
+    DashboardComponent,
+    SetpasswordComponent,
+    ResetPasswordComponent 
   ],
   imports: [
     BrowserModule,
@@ -26,6 +34,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule, 
     NgbModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

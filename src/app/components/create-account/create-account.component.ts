@@ -15,10 +15,6 @@ export class CreateAccountComponent implements OnInit {
   public createAccount !: FormGroup;
   submit: boolean = false;
 
-
-  get all() {
-    return this.createAccount.controls
-  }
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -26,22 +22,28 @@ export class CreateAccountComponent implements OnInit {
     ){
   }
 
+  get all() {
+    return this.createAccount.controls
+  }
+
   ngOnInit(): void {
     this.createAccount = this.formBuilder.group({
-      fullname: [''],
+      fullname: new FormControl("", [Validators.required,Validators.minLength(4)]),
       email:  new FormControl("", [Validators.required, Validators.email,Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]),
       date: [''],
-      phonenumber: [''],
-      password: new FormControl("", [Validators.required, Validators.minLength(6)])
+      phonenumber: new FormControl("", [Validators.required, Validators.pattern("[0-9 ]{12}")])
     })
   }
 
   signUp(form:NgForm) {
-    this.http.post<any>("http://localhost:3000/signupUsers", this.createAccount.value)
+    this.submit = true;
+    if (this.createAccount.invalid) {
+      return;
+    }
+    this.http.post<any>("http://localhost:3000/signUp", this.createAccount.value)
       .subscribe(res =>{
-      alert("Signup Succesfully");
       this.createAccount.reset();
-      this.router.navigate(['login'])
+      this.router.navigate(['set-password'])
     }, err=>{
       alert("Something went wrong")
     })

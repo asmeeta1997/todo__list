@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/api.service';
-import { TaskModel } from './dashboard.model';
+import { TaskModel, ListNameModel } from './dashboard.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,63 +15,105 @@ export class DashboardComponent implements OnInit {
   todaytask = "../../../assets/images/todo-tasks.png";
   upcommingtasks = "../../../assets/images/upcomingtasks.png";
   overduetasks = "../../../assets/images/overduetasks.png";
-  todaytas="todays task image";
-  upcommingtask="upcomming image";
-  overduetask="ovweduetask image"
+  todaytas = "todays task image";
+  upcommingtask = "upcomming image";
+  overduetask = "overduetask image";
 
+  currentDate: Date = new Date();
+
+  formList !: FormGroup;
   formValue !: FormGroup;
+  listModelObj: ListNameModel = new ListNameModel();
   taskModelObj: TaskModel = new TaskModel();
+  listData !: any;
   taskData !: any;
 
-  listNames = [
-    { id: 1, name: 'Personal'},
-    { id: 2, name: 'Work'},
-    { id: 3, name: 'College work' },
-    { id: 4, name: 'Shopping' },
-    { id: 5, name: 'Birthday' },
-    { id: 6, name: 'Tour' }
-  ];
   priorityList = [
-    { id: 1, name: 'Low' },
+    { id: 1, name: 'High' },
     { id: 2, name: 'Medium' },
-    { id: 3, name: 'High' }
+    { id: 3, name: 'Low' }
   ];
 
 
   constructor(
     private formBuilder: FormBuilder,
-    private api: ApiService
+    private api: ApiService,
+    private toastr: ToastrService
+
   ) { }
 
+  
   ngOnInit(): void {
+
+    //choose list name
+    this.formList = this.formBuilder.group({
+      listname: new FormControl("", [Validators.required])
+    })
+    this.getAllListName();
+
+    //task list 
+
     this.formValue = this.formBuilder.group({
-      taskname: [''],
-      chooselist: [''],
-      choosepriority: [''],
-      date: ['']
+      taskname: new FormControl("", [Validators.required]),
+      chooselist: new FormControl("", [Validators.required]),
+      choosepriority: new FormControl("", [Validators.required]),
+      date: new FormControl("", [Validators.required]),
 
     })
     this.getAllTask();
   }
 
+  //choose list name details
+
+  postListnameDetails() {
+    if (this.formList.invalid) {
+      return;
+    }
+    this.listModelObj.listname = this.formList.value.listname;
+    this.api.postList(this.listModelObj)
+      .subscribe(res => {
+        this.toastr.success('List Added Successfully');
+        let ref = document.getElementById('close')
+        ref?.click();
+        this.formList.reset();
+        this.getAllListName();
+      },
+        err => {
+          this.toastr.error('Something went wrong', 'Main error',{
+            timeOut: 3000,
+          });
+        })
+  }
+  getAllListName() {
+    this.api.getList()
+      .subscribe(res => {
+        this.listData = res;
+      })
+  }
+
+  // task detils
+
   postTaskDetails() {
+    if (this.formValue.invalid) {
+      return;
+    }
     this.taskModelObj.taskname = this.formValue.value.taskname;
     this.taskModelObj.chooselist = this.formValue.value.chooselist;
     this.taskModelObj.choosepriority = this.formValue.value.choosepriority;
     this.taskModelObj.date = this.formValue.value.date;
-    
 
     this.api.postTask(this.taskModelObj)
       .subscribe(res => {
-        console.log(res)
-        alert("List Added Succesfully")
+        this.toastr.success('Task Added Successfully');
         let ref = document.getElementById('cancel')
         ref?.click();
         this.formValue.reset();
         this.getAllTask();
       },
         err => {
-          alert("Someting went wrong")
+          this.toastr.error('Something went wrong', 'Main error',{
+            timeOut: 3000,
+          });
         })
 
   }
@@ -83,10 +126,13 @@ export class DashboardComponent implements OnInit {
   deleteTask(row: any) {
     this.api.deleteTask(row)
       .subscribe(res => {
-        alert("Task Deleted");
+        this.toastr.success('Task Deleted Successfully');
         this.getAllTask();
       })
   }
 
 
 }
+
+
+

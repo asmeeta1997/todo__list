@@ -1,8 +1,7 @@
 .main_section {
   background-color: $background-color-all;
   min-height: 100vh;
-  font-family: Roboto;
-
+  font-family: auto;
   .main__todo__div {
     display: flex;
     justify-content: center;
@@ -17,25 +16,20 @@
         color: $color-primary;
         margin: 5px 0 0;
       }
-
-      .form-control.ng-touched.ng-invalid {
-        border: 1px solid $color-primary;
-      }
-
-      .form-control.ng-touched.ng-valid {
-        border: 1px solid $color-accent-33;
-      }
-
       h2 {
         color: $color-primary;
         margin-bottom: 20px;
         text-transform: uppercase;
-        font-weight: 600;
+        font-size:21px;
+      }
+      h4{
+        font-size:20px;
+        font-family: 'Font Awesome 5 Free';
       }
 
       p {
         margin-bottom: 20px;
-        color: $color-accent-2;
+        color: $color-accent-1;
         font-size: 14px;
       }
 
@@ -55,7 +49,7 @@
           position: absolute;
           top: 13px;
           left: 10px;
-          color: $color-accent-2;
+          color: $color-accent-1;
           font-size: 13px;
         }
       }
@@ -81,4 +75,11 @@
     }
 
   }
+}
+.form-control.ng-touched.ng-invalid {
+  border: 1px solid $color-primary;
+}
+
+.form-control.ng-touched.ng-valid {
+  border: 1px solid $color-accent-6;
 }
