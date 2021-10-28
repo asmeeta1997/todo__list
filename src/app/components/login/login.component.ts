@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home'])
         }
         else{
-          this.toastr.error('User does not exist','',{
+          this.toastr.error('Email or Password incorrect','',{
             timeOut: 3000,
           });
         }
