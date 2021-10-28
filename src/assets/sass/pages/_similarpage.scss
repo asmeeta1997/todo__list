@@ -76,6 +76,15 @@
 
   }
 }
+
+//error message css
+
+
+.ng-submitted{
+  input{
+    border: 1px solid $color-primary;
+  }
+}
 .form-control.ng-touched.ng-invalid {
   border: 1px solid $color-primary;
 }
