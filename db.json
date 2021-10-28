@@ -11,43 +11,16 @@
   ],
   "taskDetail": [
     {
-      "id": 3,
-      "taskname": "demo",
-      "chooselist": "work",
+      "id": 1,
+      "taskname": "hey",
+      "chooselist": "hey",
       "choosepriority": "Medium",
-      "date": "2021-10-21"
-    },
-    {
-      "id": 4,
-      "taskname": "shooping",
-      "chooselist": "work",
-      "choosepriority": "Low",
-      "date": "2021-10-15"
+      "date": "2021-10-30T18:12"
     }
   ],
   "listNames": [
     {
       "id": 1,
-      "listname": "work"
-    },
-    {
-      "id": 2,
-      "listname": "shopping"
-    },
-    {
-      "id": 3,
-      "listname": "try"
-    },
-    {
-      "id": 4,
-      "listname": "haul"
-    },
-    {
-      "id": 5,
-      "listname": "lol"
-    },
-    {
-      "id": 6,
       "listname": "hey"
     }
   ],

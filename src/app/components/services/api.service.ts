@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import { TaskModel, ListNameModel } from "../components/dashboard/dashboard.model";
+import { TaskModel, ListNameModel } from "../dashboard/dashboard.model"
 
 @Injectable({
   providedIn: "root",

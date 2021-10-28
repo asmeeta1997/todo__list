@@ -52,14 +52,23 @@
           color: $color-accent-1;
           font-size: 13px;
         }
-        .password__icon__css{
+        .password__icon__css, .password__icon__css__valid , .password__icon__css__invalid{
           position: absolute;
           top: 11px;
           right: 7px;
+          cursor: pointer;
+        }
+        .password__icon__css{
           color: $color-accent-1;
           font-size: 17px;
-          cursor: pointer;
-          
+        }
+       .password__icon__css__invalid{
+          color:$color-primary;
+          font-size:15px;
+        }
+        .password__icon__css__valid{
+          color:$color-accent-6;
+          font-size:15px;
         }
       }
 
