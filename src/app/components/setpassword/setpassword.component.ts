@@ -16,6 +16,8 @@ export class SetpasswordComponent implements OnInit {
   public setPassword !: FormGroup;
 
   submit: boolean = false;
+  hide = true;
+  hide2=true;
 
   get all() {
     return this.setPassword.controls

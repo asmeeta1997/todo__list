@@ -12,11 +12,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  resetPasswordImg = "../../../assets/images/create-account.png";
+  resetPasswordImg = "../../../assets/images/reset-password.png";
   resetPasswordImgAlt = "Reset Image";
 
   public resetPassword !: FormGroup;
   submit: boolean = false;
+
+  hide= true;
+  hide2 = true;
 
   get all() {
     return this.resetPassword.controls

@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   isLoginMode = true;
   authResponse: any;
   users = "token";
+  hide = true;
 
 
   onSwitchMode(){

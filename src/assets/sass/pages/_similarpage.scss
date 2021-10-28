@@ -52,6 +52,15 @@
           color: $color-accent-1;
           font-size: 13px;
         }
+        .password__icon__css{
+          position: absolute;
+          top: 11px;
+          right: 7px;
+          color: $color-accent-1;
+          font-size: 17px;
+          cursor: pointer;
+          
+        }
       }
 
       .forgot_password_css_inner {

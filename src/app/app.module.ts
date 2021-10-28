@@ -18,7 +18,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthService } from './components/services/auth.service';
 import { AuthGuard } from './components/services/auth.guard';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CreateAccountComponent,
     DashboardComponent,
     SetpasswordComponent,
-    ResetPasswordComponent 
+    ResetPasswordComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatExpansionModule,
     ToastrModule.forRoot(),
     FontAwesomeModule,
+    MatInputModule
+
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
