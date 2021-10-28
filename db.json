@@ -1,4 +1,14 @@
 {
+  "signUp": [
+    {
+      "fullname": "asmi karki",
+      "email": "admin@admin.com",
+      "date": "2021-10-16",
+      "phonenumber": 9860153021,
+      "password": "admin1234",
+      "id": 1
+    }
+  ],
   "taskDetail": [
     {
       "id": 3,
@@ -13,16 +23,6 @@
       "chooselist": "work",
       "choosepriority": "Low",
       "date": "2021-10-15"
-    }
-  ],
-  "signUp": [
-    {
-      "fullname": "asmi karki",
-      "email": "admin@admin.com",
-      "date": "2021-10-16",
-      "phonenumber": 9860153021,
-      "password": "admin1234",
-      "id": 1
     }
   ],
   "listNames": [
