@@ -29,7 +29,7 @@
                       *ngIf="all.fullname.errors.required"
                       class="error__in__validation"
                     >
-                      Fullname is Required
+                      Field is Required !
                     </p>
                     <p
                       *ngIf="all.fullname.errors.minlength"
@@ -85,9 +85,18 @@
                     />
                     <!-- <i class="fas fa-calendar-week main_icon_form_inner"></i> -->
                   </div>
+                  <div *ngIf="submit && all.date.errors">
+                    <p
+                      *ngIf="all.date.errors.required"
+                      class="error__in__validation"
+                    >
+                      Field is Required !
+                    </p>
+                  </div>
                 </div>
                 <div class="mb-3">
                   <label for="number" class="form-label">Phone</label>
+                  <div class="">
                   <div class="responsive__icon">
                     <input
                       type="number"
@@ -99,12 +108,13 @@
                     />
                     <i class="fas fa-phone-alt main_icon_form_inner"></i>
                   </div>
+                </div>
                   <div *ngIf="submit && all.phonenumber.errors">
                     <p
                       *ngIf="all.phonenumber.errors.required"
                       class="error__in__validation"
                     >
-                      Phonenumber is Required
+                      Field is Required !
                     </p>
                     <p
                       *ngIf="all.phonenumber.errors.pattern"
@@ -132,7 +142,7 @@
                       *ngIf="all.email.errors.required"  
                       class="error__in__validation"
                     >
-                      Email is required
+                      Field is Required !
                     </p>
                     <p *ngIf="all.email.errors.pattern" class="error__in__validation">Email must be a valid</p>
                   </div>

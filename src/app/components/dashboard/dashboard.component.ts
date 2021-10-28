@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ApiService } from 'src/app/shared/api.service';
 import { TaskModel, ListNameModel } from './dashboard.model';
 import { ToastrService } from 'ngx-toastr';
-
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
   taskModelObj: TaskModel = new TaskModel();
   listData !: any;
   taskData !: any;
-
   priorityList = [
     { id: 1, name: 'High' },
     { id: 2, name: 'Medium' },
@@ -38,8 +37,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
-    private toastr: ToastrService
-
+    private toastr: ToastrService,
+    private authService:AuthService,
   ) { }
 
   
@@ -130,8 +129,9 @@ export class DashboardComponent implements OnInit {
         this.getAllTask();
       })
   }
-
-
+  loggedOut(){
+    this.authService.logout();
+   }  
 }
 
 

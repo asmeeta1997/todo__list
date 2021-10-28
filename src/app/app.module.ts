@@ -15,6 +15,9 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthService } from './components/services/auth.service';
+import { AuthGuard } from './components/services/auth.guard';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -37,8 +40,9 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     MatExpansionModule,
     ToastrModule.forRoot(),
+    FontAwesomeModule,
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

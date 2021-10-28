@@ -6,13 +6,14 @@ import {CreateAccountComponent} from './components/create-account/create-account
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import { SetpasswordComponent } from './components/setpassword/setpassword.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { AuthGuard } from './components/services/auth.guard';
  
 const routes: Routes = [ 
   {path: '' , redirectTo:'login', pathMatch:'full' },
   {path: 'login' , component: LoginComponent },
   {path: 'forget-password',component: ForgotPasswordComponent},
   {path: 'create-account',component: CreateAccountComponent},
-  {path: 'home',component: DashboardComponent},
+  {path: 'home',component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'set-password',component: SetpasswordComponent},
   {path: 'reset-password',component: ResetPasswordComponent},
   // {path: '**', component:NotFound}

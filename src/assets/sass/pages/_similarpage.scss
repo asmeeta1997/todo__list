@@ -83,6 +83,7 @@
 .ng-submitted{
   input{
     border: 1px solid $color-primary;
+    transition: all 0.3s ease;
   }
 }
 .form-control.ng-touched.ng-invalid {

@@ -30,8 +30,8 @@ export class CreateAccountComponent implements OnInit {
     this.createAccount = this.formBuilder.group({
       fullname: new FormControl("", [Validators.required,Validators.minLength(4)]),
       email:  new FormControl("", [Validators.required, Validators.email,Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]),
-      date: [''],
-      phonenumber: new FormControl("", [Validators.required, Validators.pattern("[0-9 ]{12}")])
+      date: new FormControl("", [Validators.required]),
+      phonenumber: new FormControl("", [Validators.required, Validators.pattern("[0-9 ]{10}")])
     })
   }
 

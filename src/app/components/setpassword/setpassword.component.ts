@@ -31,7 +31,7 @@ export class SetpasswordComponent implements OnInit {
   ngOnInit(): void {
     this.setPassword = this.formBuilder.group({
       password: new FormControl("",   [ Validators.required, Validators.minLength(8)]),
-      confirmpassword: new FormControl("", [ Validators.required, ])
+      confirmpassword: new FormControl("", [ Validators.required])
     },
     {
       validators:this.mustMatch('password','confirmpassword')

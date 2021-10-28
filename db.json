@@ -13,54 +13,16 @@
       "chooselist": "work",
       "choosepriority": "Low",
       "date": "2021-10-15"
-    },
-    {
-      "id": 5,
-      "taskname": "asasa",
-      "chooselist": "shopping",
-      "choosepriority": "Low",
-      "date": "2021-10-20"
     }
   ],
   "signUp": [
     {
-      "fullname": "asmita",
-      "email": "admin@diseasepredictor.com",
+      "fullname": "asmi karki",
+      "email": "admin@admin.com",
       "date": "2021-10-16",
-      "phonenumber": 977985684100,
+      "phonenumber": 9860153021,
+      "password": "admin1234",
       "id": 1
-    },
-    {
-      "password": "asasaaa",
-      "confirmpassword": "asasaaa",
-      "id": 2
-    }
-  ],
-  "login": [
-    {
-      "email": "cebim30436@shensufu.com",
-      "password": "iahdlusagsa",
-      "id": 1
-    },
-    {
-      "email": "dodori6013@tst999.com",
-      "password": "asasasas",
-      "id": 2
-    },
-    {
-      "email": "dodori6013@tst999.com",
-      "password": "iaihbslahs",
-      "id": 3
-    },
-    {
-      "email": "karkiasmita3@gmail.com",
-      "password": "12232323232",
-      "id": 4
-    },
-    {
-      "email": "lsnlaa@gmail.com",
-      "password": "aslkalhsa",
-      "id": 5
     }
   ],
   "listNames": [
@@ -83,6 +45,10 @@
     {
       "id": 5,
       "listname": "lol"
+    },
+    {
+      "id": 6,
+      "listname": "hey"
     }
   ],
   "resetpassword": [

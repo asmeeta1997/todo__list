@@ -13,7 +13,7 @@
               <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)" [formGroup]="loginForm" name="loginForm">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email address</label>
-                  <div class="responsive__icon" >
+                  <div class="responsive__icon">
                     <input
                       formControlName="email"
                       name="email"
@@ -30,7 +30,7 @@
                       *ngIf="all.email.errors.required"  
                       class="error__in__validation"
                     >
-                      Email is required
+                      Field is Required !
                     </p>
 
                     <p *ngIf="all.email.errors.pattern" class="error__in__validation">Email must be a valid</p>
@@ -55,13 +55,13 @@
                       *ngIf="all.password.errors.required"
                       class="error__in__validation"
                     >
-                      Password is Required
+                      Field is Required !
                     </p>
                     <p
                       *ngIf="all.password.errors.minlength"
                       class="error__in__validation"
                     >
-                      Password Atleast 6 letter
+                    Must be atleast 8 characters!
                     </p>
                   </div>
                 </div>
