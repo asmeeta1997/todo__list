@@ -173,7 +173,7 @@
           <div class="table-responsive">
             <table class="table">
               <tbody>
-                <tr *ngFor="let row of taskData; let i = index">
+                <tr *ngFor="let row of taskData">
                   <td>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
@@ -188,9 +188,9 @@
                   </td>
                   <td>
                     <div class="priority__custom_css" [ngClass]="{
-                        my_class1: i === 0,
-                        my_class2: i === 1,
-                        my_class3: i === 2
+                        my_class1: row.choosepriority == 'High',
+                        my_class2: row.choosepriority == 'Low',
+                        my_class3: row.choosepriority == 'Medium'
                       }">
                       {{ row.choosepriority }}
                     </div>
@@ -277,7 +277,11 @@
                             </div>
                           </td>
                           <td>
-                            <div class="priority__custom_css">
+                            <div class="priority__custom_css" [ngClass]="{
+                              my_class1: row.choosepriority == 'High',
+                              my_class2: row.choosepriority == 'Low',
+                              my_class3: row.choosepriority == 'Medium'
+                            }">
                               {{ row.choosepriority }}
                             </div>
                           </td>
