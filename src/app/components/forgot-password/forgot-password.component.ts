@@ -63,7 +63,7 @@ export class ForgotPasswordComponent implements OnInit {
           this.router.navigate(["reset-password"]);
           this.passwordforgot.reset();
         } else {
-          this.toastr.error("Email does not exist", "", {
+          this.toastr.error("User doesn't exist", "", {
             timeOut: 3000,
           });
         }

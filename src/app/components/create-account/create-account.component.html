@@ -135,6 +135,8 @@
                       name="email"
                       required
                     />
+                    <i class="fas fa-times password__icon__css__invalid" matSuffix *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"></i>
+                    <i class="fas fa-check password__icon__css__valid" matSuffix *ngIf="loginForm.controls['email'].valid"></i>
                     <i class="fas fa-envelope main_icon_form_inner"></i>
                   </div>
                   <div *ngIf="submit && all.email.errors" >
