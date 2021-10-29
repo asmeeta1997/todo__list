@@ -18,7 +18,7 @@ export class ResetPasswordComponent implements OnInit {
   public resetPassword !: FormGroup;
   submit: boolean = false;
 
-  hide= true;
+  hide =  true;
   hide2 = true;
 
   get all() {
@@ -64,7 +64,7 @@ export class ResetPasswordComponent implements OnInit {
     if (this.resetPassword.invalid) {
       return;
     }
-    this.http.post<any>("http://localhost:3000/resetpassword", this.resetPassword.value)
+    this.http.post<any>("https://617b7a78d842cf001711befc.mockapi.io/resetpassword", this.resetPassword.value)
       .subscribe(res =>{
         this.toastr.success('ResetPassword Successfully');
         this.router.navigate(['login'])

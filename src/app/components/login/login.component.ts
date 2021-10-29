@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   isLoginMode = true;
   authResponse: any;
   users = "token";
-  hide = true;
+  hide= true;
 
 
   onSwitchMode(){
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.http.get<any>("http://localhost:3000/signUp")
+    this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/signup")
       .subscribe(res =>{
         const user = res.find((a:any)=>{
           return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password

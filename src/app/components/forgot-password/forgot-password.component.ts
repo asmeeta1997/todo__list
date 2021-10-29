@@ -53,7 +53,7 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.passwordforgot.invalid) {
       return;
     }
-    this.http.get<any>("http://localhost:3000/signUp").subscribe(
+    this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/signup").subscribe(
       (res) => {
         const user = res.find((a: any) => {
           return a.email === this.passwordforgot.value.email;
@@ -63,7 +63,7 @@ export class ForgotPasswordComponent implements OnInit {
           this.router.navigate(["reset-password"]);
           this.passwordforgot.reset();
         } else {
-          this.toastr.error("User does not exist", "", {
+          this.toastr.error("Email does not exist", "", {
             timeOut: 3000,
           });
         }

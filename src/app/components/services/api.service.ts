@@ -12,21 +12,21 @@ export class ApiService {
 
 
   postTask(data: TaskModel){
-    return this.http.post<any>("http://localhost:3000/taskDetail", data)
+    return this.http.post<any>("https://617b7a78d842cf001711befc.mockapi.io/taskDetail", data)
     .pipe(map((res: any) => {
         return res ;
       })
     );
   }
   getTask() {
-    return this.http.get<any>("http://localhost:3000/taskDetail")
+    return this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/taskDetail")
     .pipe(map((res: any) => {
         return res;
       })
     );
   }
   deleteTask(id:number){
-    return this.http.delete<any>("http://localhost:3000/taskDetail/"+id)
+    return this.http.delete<any>("https://617b7a78d842cf001711befc.mockapi.io/taskDetail/"+id)
     .pipe(map((res: any) => {
         return res;
       })
@@ -37,14 +37,14 @@ export class ApiService {
   //for list name api call
 
   postList(data: ListNameModel){
-    return this.http.post<any>("http://localhost:3000/listNames", data)
+    return this.http.post<any>("https://617b7a78d842cf001711befc.mockapi.io/listNames", data)
     .pipe(map((res: any) => {
         return res ;
       })
     );
   }
   getList() {
-    return this.http.get<any>("http://localhost:3000/listNames")
+    return this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/listNames")
     .pipe(map((res: any) => {
         return res;
       })

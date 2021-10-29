@@ -40,7 +40,7 @@ export class CreateAccountComponent implements OnInit {
     if (this.createAccount.invalid) {
       return;
     }
-    this.http.post<any>("http://localhost:3000/signUp", this.createAccount.value)
+    this.http.post<any>("https://617b7a78d842cf001711befc.mockapi.io/signup", this.createAccount.value)
       .subscribe(res =>{
       this.createAccount.reset();
       this.router.navigate(['set-password'])

@@ -61,7 +61,7 @@ export class SetpasswordComponent implements OnInit {
     if (this.setPassword.invalid) {
       return;
     }
-    this.http.post<any>("http://localhost:3000/signUp", this.setPassword.value)
+    this.http.post<any>("https://617b7a78d842cf001711befc.mockapi.io/signup", this.setPassword.value)
       .subscribe(res =>{
         this.toastr.success('Signup Successfully');
         this.router.navigate(['login'])
