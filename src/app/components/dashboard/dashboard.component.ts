@@ -32,6 +32,12 @@ export class DashboardComponent implements OnInit {
     { id: 2, name: 'Medium' },
     { id: 3, name: 'Low' }
   ];
+  counter:any ={
+    today:0,
+    upcomming:0,
+    overdue:0
+  }
+
 
 
   constructor(
