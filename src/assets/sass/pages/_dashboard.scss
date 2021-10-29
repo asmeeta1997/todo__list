@@ -5,11 +5,13 @@
             font-size: 20px;
             font-weight: 500;
         }
-        .logout__button__demo{
-            border:none;
+
+        .logout__button__demo {
+            border: none;
             background: transparent;
         }
-        .navbar-nav{
+
+        .navbar-nav {
             flex-direction: row;
         }
     }
@@ -54,7 +56,8 @@
         align-items: baseline;
         justify-content: space-between;
         margin-top: 10px;
-        @include lg{
+
+        @include lg {
             margin-right: 20px;
         }
 
@@ -100,17 +103,32 @@
                 font-size: 13px;
             }
         }
+
         .priority__custom_css {
             text-align: end;
+            margin-top: 10px;
+            .priority__custom__css__inside {
+                padding: 8px;
+                border-radius: 6px;
+            }
         }
-        .my_class1{
+
+        .my_class_high {
             color: $color-primary;
+            background-color:$color-accent-9;
+
         }
-        .my_class2{
-            color: blue;
+
+        .my_class_low {
+            color: $color-accent-8;
+            background-color: $color-accent-10;
+
         }
-        .my_class3{
-            color: green;
+
+        .my_class_medium {
+            color: $color-accent-6;
+            background-color: $color-accent-10;
+
         }
     }
 
