@@ -3,7 +3,7 @@ export class TaskModel {
     taskname: string = "";
     chooselist: string = "";
     choosepriority: string = "";
-    date: number = 0;
+    dateTime: number = 0;
 }
 export class ListNameModel {
     id: number = 0;

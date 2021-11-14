@@ -1,33 +1,28 @@
-<div class="section__dashboard">
-  <div class="main__home">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="section-dashboard">
+  <div class="main-home">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid container">
         <a class="navbar-brand" href="#">
           <h3>TODO APP</h3>
         </a>
         <div class="d-flex justify-content-end">
           <div class="d-flex">
-            <ul
-              class="
+            <ul class="
                 navbar-nav
                 me-auto
                 mb-2 mb-lg-0
                 d-flex
                 align-items-baseline
-              "
-            >
+              ">
               <li class="nav-item">
-                <div class="inner__section__task_list">
+                <div class="inner-section-task-list">
                   <a class="nav-link active" aria-current="page" href="#">
                     <p class="custom_padding">AK</p>
                   </a>
                 </div>
               </li>
               <li class="nav-item">
-                <button
-                  class="nav-link logout__button__demo"
-                  (click)="loggedOut()"
-                >
+                <button class="nav-link logout-button-demo" (click)="loggedOut()">
                   <i class="fas fa-sign-out-alt me-1"></i>Logout
                 </button>
               </li>
@@ -40,7 +35,7 @@
   <section>
     <div class="container">
       <div class="d-flex justify-content-between mt-4 flex-wrap">
-        <div class="inner__home__first_part">
+        <div class="inner-home-first-part">
           <h3>{{ currentDate | date }}</h3>
           <p>
             You keep up the place to accomplish your task in time
@@ -49,66 +44,36 @@
         </div>
         <div>
           <!-- Button trigger modal -->
-          <button
-            type="button"
-            class="btn btn-danger w-100 btn__custom__modal"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
+          <button type="button" class="btn btn-danger w-100 btn-custom-modal" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
             Create new Task
           </button>
 
           <!-- Modal -->
-          <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
-                    Create task
+                  <h5 class="modal-title cusom-css-h5-modal" id="exampleModalLabel">
+                    Create List
                   </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form [formGroup]="formValue">
                   <div class="modal-body">
                     <div>
                       <div class="mb-3">
-                        <label for="taskname" class="form-label"
-                          >Task name</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="taskname"
-                          placeholder="Enter task name"
-                          formControlName="taskname"
-                          required
-                        />
+                        <label for="taskname" class="form-label">Task name</label>
+                        <input type="text" class="form-control" id="taskname" placeholder="Enter task name"
+                          formControlName="taskname" required />
                       </div>
                       <div class="row">
                         <div class="col-lg-4">
                           <div>
-                            <label for="chooselist" class="form-label"
-                              >Choose list</label
-                            >
-                            <select
-                              class="form-select"
-                              id="chooselist"
-                              aria-label="Default select example"
-                              formControlName="chooselist"
-                              name="chooselist"
-                              required
-                            >
+                            <label for="chooselist" class="form-label">Choose list</label>
+                            <select class="form-select" id="chooselist" aria-label="Default select example"
+                              formControlName="chooselist" name="chooselist" required>
                               <option selected hidden>Choose list name</option>
                               <option *ngFor="let list of listData">
                                 {{ list.listname }}
@@ -119,16 +84,9 @@
                         <div class="col-lg-4">
                           <div>
                             <label for="choosepriority" class="form-label">
-                              Choose priority</label
-                            >
-                            <select
-                              class="form-select"
-                              id="choosepriority"
-                              aria-label="Default select example"
-                              formControlName="choosepriority"
-                              name="choosepriority"
-                              required
-                            >
+                              Choose priority</label>
+                            <select class="form-select" id="choosepriority" aria-label="Default select example"
+                              formControlName="choosepriority" name="choosepriority" required>
                               <option selected hidden>Choose priority</option>
                               <option *ngFor="let list of priorityList">
                                 {{ list.name }}
@@ -138,36 +96,19 @@
                         </div>
                         <div class="col-lg-4">
                           <div>
-                            <label for="dateandtime" class="form-label"
-                              >Select date</label
-                            >
-                            <input
-                              type="datetime-local"
-                              class="form-control"
-                              id="dateandtime"
-                              placeholder="Choose date and time"
-                              formControlName="date"
-                              required
-                            />
+                            <label for="dateandtime" class="form-label">Select date</label>
+                            <input type="datetime-local" class="form-control" id="dateandtime"
+                              placeholder="Choose date and time" formControlName="dateTime" required />
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary"
-                      data-bs-dismiss="modal"
-                      id="cancel"
-                    >
+                    <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="cancel">
                       Cancel
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-danger"
-                      (click)="postTaskDetails()"
-                    >
+                    <button type="reset" class="btn btn-danger" (click)="postTaskDetails()" data-bs-dismiss="modal">
                       Add task
                     </button>
                   </div>
@@ -186,47 +127,35 @@
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <div class="part_overview_section">
+          <div class="part-overview-section">
             <div>
-              <img
-                src="{{ todaytask }}"
-                alt="{{ todaytas }}"
-                class="img-fluid me-4"
-              />
+              <img src="{{ todaytask }}" alt="{{ todaytas }}" class="img-fluid me-4" />
             </div>
             <div>
               <h6>Today's tasks</h6>
-              <h5>{{ counter.today }}</h5>
+              <h5>{{ todayTask }}</h5>
             </div>
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="part_overview_section">
+          <div class="part-overview-section">
             <div>
-              <img
-                src="{{ upcommingtasks }}"
-                alt="{{ upcommingtask }}"
-                class="img-fluid me-4"
-              />
+              <img src="{{ upcommingtasks }}" alt="{{ upcommingtask }}" class="img-fluid me-4" />
             </div>
             <div>
               <h6>Upcomming tasks</h6>
-              <h5>{{ counter.upcomming }}</h5>
+              <h5>{{ commingTask }}</h5>
             </div>
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="part_overview_section">
+          <div class="part-overview-section">
             <div>
-              <img
-                src="{{ overduetasks }}"
-                alt="{{ overduetask }}"
-                class="img-fluid me-4"
-              />
+              <img src="{{ overduetasks }}" alt="{{ overduetask }}" class="img-fluid me-4" />
             </div>
             <div>
               <h6>Overdue tasks</h6>
-              <h5>{{ counter.overdue }}</h5>
+              <h5>{{ overDueTask }}</h5>
             </div>
           </div>
         </div>
@@ -236,43 +165,34 @@
   <section class="container mt-4">
     <div class="row">
       <div class="col-lg-5">
-        <div class="inner__section__task_list">
+        <div class="inner-section-task-list">
           <h6>Today's task</h6>
-          <p>{{ counter.today }}</p>
+          <p>{{ todayTask }}</p>
         </div>
-        <div class="main__table__inner__dashboard">
+        <div class="main-table-inner-dashboard">
           <div class="table-responsive">
             <table class="table">
               <tbody>
                 <tr *ngFor="let row of taskData">
                   <td>
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckChecked"
-                        (click)="deleteTask(row.id)"
-                      />
-                      <label class="form-check-label" for="flexCheckChecked">
+                      <input class="form-check-input custom-form-check" type="checkbox" value="" id="flexCheckChecked"
+                        (click)="deleteTask(row.id)" />
+                      <label class="form-check-label custom-form-check_label">
                         <div class="text-capitalize">{{ row.taskname }}</div>
-                        <div class="inner__checkbox_chooselist">
-                          <p>{{ row.chooselist }}</p>
+                        <div>
+                          <p class="inner-checkbox-chooselist-p">{{ row.chooselist }}</p>
                         </div>
                       </label>
                     </div>
                   </td>
                   <td>
-                    <div class="priority__custom_css">
-                      <span
-                        class="priority__custom__css__inside"
-                        [ngClass]="{
+                    <div class="priority-custom-css">
+                      <span class="priority-custom-css-inside" [ngClass]="{
                           my_class_high: row.choosepriority == 'High',
                           my_class_low: row.choosepriority == 'Low',
                           my_class_medium: row.choosepriority == 'Medium'
-                        }"
-                        >{{ row.choosepriority }}</span
-                      >
+                        }">{{ row.choosepriority }}</span>
                     </div>
                   </td>
                 </tr>
@@ -282,74 +202,43 @@
         </div>
       </div>
       <div class="col-lg-7">
-        <div class="inner__section__task_list">
+        <div class="inner-section-task-list">
           <h6>List Names</h6>
           <div>
             <!-- Button trigger modal -->
-            <button
-              type="button"
-              class="btn btn-outline-danger w-100 btn__custom__modal"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal2"
-            >
+            <button type="button" class="btn btn-outline-danger w-100 btn-custom-modal" data-bs-toggle="modal"
+              data-bs-target="#exampleModal2">
               Create new List
             </button>
 
             <!-- Modal -->
-            <div
-              class="modal fade"
-              id="exampleModal2"
-              tabindex="-1"
-              aria-labelledby="exampleModalLabel2"
-              aria-hidden="true"
-            >
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+              aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel2">
+                    <h5 class="modal-title cusom-css-h5-modal" id="exampleModalLabel2">
                       Create task
                     </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <form [formGroup]="formList">
                     <div class="modal-body">
                       <div>
                         <div class="mb-3">
-                          <label for="listname" class="form-label"
-                            >List name</label
-                          >
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="listname"
-                            placeholder="Enter list name"
-                            formControlName="listname"
-                            name="listname"
-                            required
-                          />
+                          <label for="listname" class="form-label">List name</label>
+                          <input type="text" class="form-control" id="listname" placeholder="Enter list name"
+                            formControlName="listname" name="listname" required />
                         </div>
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-outline-secondary"
-                        data-bs-dismiss="modal"
-                        id="close"
-                      >
+                      <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                         Cancel
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-danger"
-                        (click)="postListnameDetails()"
-                      >
-                        Add task
+                      <button type="reset" class="btn btn-danger" (click)="postListnameDetails()"
+                        data-bs-dismiss="modal">
+                        Add list
                       </button>
                     </div>
                   </form>
@@ -358,37 +247,28 @@
             </div>
           </div>
         </div>
-        <div class="main__table__inner__dashboard">
+        <div class="main-table-inner-dashboard">
           <div *ngFor="let list of listData">
             <mat-accordion>
-              <mat-expansion-panel class="inner__expansion__accordion">
-                <mat-expansion-panel-header class="inner__header__accordion">
+              <mat-expansion-panel class="inner-expansion-accordion">
+                <mat-expansion-panel-header class="inner-header-accordion">
                   <mat-panel-title>
-                    <div>
+                    <div class="d-flex align-items-baseline">
                       <p>{{ list.listname }}</p>
+                      <!-- <h6>{{ commingTask}}</h6> -->
                     </div>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div
-                  class="main__table__inner__dashboard"
-                  *ngFor="let row of taskData"
-                >
-                  <div class="table-responsive">
-                    <table class="table">
+                <div class="main-table-inner-dashboard">
+                  <div class="table-responsive" *ngFor="let row of taskData">
+                    <table class="table" *ngIf="list.listname === row.chooselist">
                       <tbody>
                         <tr>
                           <td>
                             <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckChecked2"
-                              />
-                              <label
-                                class="form-check-label"
-                                for="flexCheckChecked2"
-                              >
+                              <input class="form-check-input custom-form-check" type="checkbox" value=""
+                                id="flexCheckChecked2" (click)="deleteTask(row.id)" />
+                              <label class="form-check-label" for="flexCheckChecked2">
                                 <div class="text-capitalize">
                                   {{ row.taskname }}
                                 </div>
@@ -396,21 +276,17 @@
                             </div>
                           </td>
                           <td>
-                            <div class="priority__custom_css mt-0">
-                              <span
-                                class="priority__custom__css__inside"
-                                [ngClass]="{
+                            <div class="priority-custom-css mt-0">
+                              <span class="priority-custom-css-inside" [ngClass]="{
                                   my_class_high: row.choosepriority == 'High',
                                   my_class_low: row.choosepriority == 'Low',
-                                  my_class_medium:row.choosepriority == 'Medium'
-                                }"
-                                >{{ row.choosepriority }}</span
-                              >
+                                  my_class_medium: row.choosepriority == 'Medium'
+                                }">{{ row.choosepriority }}</span>
                             </div>
                           </td>
                           <td>
-                            <div class="priority__custom_css">
-                              {{ row.date }}
+                            <div class="text-end">
+                              {{ row.dateTime | date:'d MMMM h:mm a'}}
                             </div>
                           </td>
                         </tr>

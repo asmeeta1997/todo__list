@@ -1,76 +1,76 @@
-<div class="main_section">
+<div class="mainsection">
   <div class="container">
-    <div class="main__todo__div">
-      <div class="inner__div__todo">
+    <div class="main-todo-div">
+      <div class="inner-div-todo">
         <div class="d-flex align-items-center">
           <div class="me-3">
             <div>
-              <h2 class="font__semibold family-auto m-0">{{ title }}</h2>
-              <h4 class="font__semibold mt-2">Login to your account</h4>
+              <h2 class="font-semibold family-auto m-0">{{ title }}</h2>
+              <h4 class="font-semibold mt-2">Login to your account</h4>
               <p>Welcome back! Please login to your account</p>
             </div>
             <div>
               <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)" [formGroup]="loginForm" name="loginForm">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email address</label>
-                  <div class="responsive__icon">
+                  <div class="responsive-icon">
                     <input
                       formControlName="email"
                       name="email"
                       type="email"
-                      class="form-control form__css"
+                      class="form-control form-css"
                       id="email"
                       placeholder="Enter your email address"
                       required
                     />
-                    <i class="fas fa-times password__icon__css__invalid" matSuffix *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"></i>
-                    <i class="fas fa-check password__icon__css__valid" matSuffix *ngIf="loginForm.controls['email'].valid"></i>
-                    <i class="fas fa-envelope main_icon_form_inner"></i>
+                    <i class="fas fa-times password-icon-css-invalid" matSuffix *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"></i>
+                    <i class="fas fa-check password-icon-css-valid" matSuffix *ngIf="loginForm.controls['email'].valid"></i>
+                    <i class="fas fa-envelope main-icon-form-inner"></i>
                   </div>
                   <div *ngIf="submit && all.email.errors" >
                     <p
                       *ngIf="all.email.errors.required"  
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                       Field is Required !
                     </p>
 
-                    <p *ngIf="all.email.errors.pattern" class="error__in__validation">Email must be a valid</p>
+                    <p *ngIf="all.email.errors.pattern" class="error-in-validation">Email must be a valid</p>
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
-                  <div class="responsive__icon">
+                  <div class="responsive-icon">
                     <input
                       formControlName="password"
                       name="password"
                       [type]="hide?'password':'text'"
-                      class="form-control form__css"
+                      class="form-control form-css"
                       placeholder="Enter your Password"
                       id="password"
                       required
                     />
-                    <i class="material-icons password__icon__css" matSuffix (click)="hide = !hide">
+                    <i class="material-icons password-icon-css" matSuffix (click)="hide = !hide">
                       {{hide ? 'visibility' : 'visibility_off'}}
                     </i>
-                    <i class="fas fa-lock main_icon_form_inner"></i>
+                    <i class="fas fa-lock main-icon-form-inner"></i>
                   </div>
                   <div *ngIf="submit && all.password.errors">
                     <p
                       *ngIf="all.password.errors.required"
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
                       *ngIf="all.password.errors.minlength"
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                     Must be atleast 8 characters!
                     </p>
                   </div>
                 </div>
-                <div class="forgot_password_css_inner">
+                <div class="forgot-password-css-inner">
                   <p><a routerLink="/forget-password">Forgot Password?</a></p>
                 </div>
                 <button
@@ -79,7 +79,7 @@
                 >
                   Login
                 </button>
-                <div class="create__account_css">
+                <div class="create-account-css">
                   <p>
                     Not registered yet?
                     <a routerLink="/create-account">Create a new account</a>

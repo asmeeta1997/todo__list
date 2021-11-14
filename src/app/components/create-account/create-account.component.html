@@ -1,39 +1,39 @@
-<div class="main_section">
+<div class="mainsection">
   <div class="container">
-    <div class="main__todo__div">
-      <div class="inner__div__todo">
+    <div class="main-todo-div">
+      <div class="inner-div-todo">
         <div class="d-flex align-items-center">
           <div class="me-3">
             <div>
-              <h2 class="font__semibold family-auto m-0">TODO APP</h2>
-              <h4 class="font__semibold mt-2">Let's get started</h4>
+              <h2 class="font-semibold family-auto m-0">TODO APP</h2>
+              <h4 class="font-semibold mt-2">Let's get started</h4>
               <p>Create an account to get started with TODO APP</p>
             </div>
             <div>
               <form #accCreate="ngForm" [formGroup]="createAccount" (ngSubmit)="signUp(accCreate.value)">
                 <div class="mb-3">
                   <label for="name" class="form-label">Full Name</label>
-                  <div class="responsive__icon">
+                  <div class="responsive-icon">
                     <input
                       type="text"
-                      class="form-control form__css"
+                      class="form-control form-css"
                       placeholder="Enter your full name"
                       formControlName="fullname"
                       name="fullname"
                       required
                     />
-                    <i class="fas fa-user main_icon_form_inner"></i>
+                    <i class="fas fa-user main-icon-form-inner"></i>
                   </div>
                   <div *ngIf="submit && all.fullname.errors">
                     <p
                       *ngIf="all.fullname.errors.required"
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
                       *ngIf="all.fullname.errors.minlength"
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                       Name shoule be more than 4 letters
                     </p>
@@ -74,21 +74,21 @@
                 </div>
                 <div class="mb-3">
                   <label for="date" class="form-label">DOB</label>
-                  <div class="responsive__icon">
+                  <div class="responsive-icon">
                     <input
                       type="date"
-                      class="form-control form__css"
+                      class="form-control form-css"
                       placeholder="Enter your date"
                       formControlName="date"
                       name="date"
                       required
                     />
-                    <!-- <i class="fas fa-calendar-week main_icon_form_inner"></i> -->
+                    <!-- <i class="fas fa-calendar-week main-icon-form-inner"></i> -->
                   </div>
                   <div *ngIf="submit && all.date.errors">
                     <p
                       *ngIf="all.date.errors.required"
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                       Field is Required !
                     </p>
@@ -97,28 +97,28 @@
                 <div class="mb-3">
                   <label for="number" class="form-label">Phone</label>
                   <div class="">
-                  <div class="responsive__icon">
+                  <div class="responsive-icon">
                     <input
                       type="number"
-                      class="form-control form__css"
+                      class="form-control form-css"
                       placeholder="Enter your number"
                       formControlName="phonenumber"
                       name="phonenumber"
                       required
                     />
-                    <i class="fas fa-phone-alt main_icon_form_inner"></i>
+                    <i class="fas fa-phone-alt main-icon-form-inner"></i>
                   </div>
                 </div>
                   <div *ngIf="submit && all.phonenumber.errors">
                     <p
                       *ngIf="all.phonenumber.errors.required"
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
                       *ngIf="all.phonenumber.errors.pattern"
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                     Invalid phone number.
                     </p>
@@ -126,27 +126,27 @@
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email address</label>
-                  <div class="responsive__icon">
+                  <div class="responsive-icon">
                     <input
                       type="email"
-                      class="form-control form__css"
+                      class="form-control form-css"
                       placeholder="Enter your email address"
                       formControlName="email"
                       name="email"
                       required
                     />
-                    <i class="fas fa-times password__icon__css__invalid" matSuffix *ngIf="createAccount.controls['email'].invalid && createAccount.controls['email'].touched"></i>
-                    <i class="fas fa-check password__icon__css__valid" matSuffix *ngIf="createAccount.controls['email'].valid"></i>
-                    <i class="fas fa-envelope main_icon_form_inner"></i>
+                    <i class="fas fa-times password-icon-css-invalid" matSuffix *ngIf="createAccount.controls['email'].invalid && createAccount.controls['email'].touched"></i>
+                    <i class="fas fa-check password-icon-css-valid" matSuffix *ngIf="createAccount.controls['email'].valid"></i>
+                    <i class="fas fa-envelope main-icon-form-inner"></i>
                   </div>
                   <div *ngIf="submit && all.email.errors" >
                     <p
                       *ngIf="all.email.errors.required"  
-                      class="error__in__validation"
+                      class="error-in-validation"
                     >
                       Field is Required !
                     </p>
-                    <p *ngIf="all.email.errors.pattern" class="error__in__validation">Email must be a valid</p>
+                    <p *ngIf="all.email.errors.pattern" class="error-in-validation">Email must be a valid</p>
                   </div>
                 </div>
                 <button
@@ -156,7 +156,7 @@
                   Next
                 </button>
               </form>
-              <div class="create__account_css">
+              <div class="create-account-css">
                 <p>
                   Already have an account?
                   <a routerLink="/login">Login</a>

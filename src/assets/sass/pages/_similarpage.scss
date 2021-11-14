@@ -1,19 +1,23 @@
-.main_section {
+.mainsection {
   background-color: $background-color-all;
   min-height: 100vh;
   font-family: auto;
 
-  .main__todo__div {
+  .main-todo-div {
     display: flex;
     justify-content: center;
     padding: 5% 0;
-
-    .inner__div__todo {
+    
+    .inner-div-todo {
       background-color: $white;
       padding: 20px 40px;
-      border-radius: 14px;
+      border-radius: 10px;
+      box-shadow: 0px 16px 16px $color-accent-11 , 0px 24px 32px $color-accent-11;
+      .btn{
+        border-radius: 10px;
+      }
 
-      .error__in__validation {
+      .error-in-validation {
         color: $color-primary;
         margin: 5px 0 0;
       }
@@ -36,19 +40,19 @@
         font-size: 14px;
       }
 
-      .responsive__icon {
+      .responsive-icon {
         position: relative;
 
-        .form__css {
+        .form-css {
           padding: 3px 27px;
           line-height: 2;
         }
 
-        .error__in__validation_form {
+        .error-in-validation_form {
           border: 1px solid $color-primary;
         }
 
-        .main_icon_form_inner {
+        .main-icon-form-inner {
           position: absolute;
           top: 13px;
           left: 10px;
@@ -56,20 +60,20 @@
           font-size: 13px;
         }
 
-        .password__icon__css,
-        .password__icon__css__invalid,
-        .password__icon__css__valid {
+        .password-icon-css,
+        .password-icon-css-invalid,
+        .password-icon-css-valid {
           position: absolute;
         }
 
-        .password__icon__css__invalid,
-        .password__icon__css__valid {
+        .password-icon-css-invalid,
+        .password-icon-css-valid {
           font-size: 13px;
           right: 10px;
           top: 13px;
         }
 
-        .password__icon__css {
+        .password-icon-css {
           color: $color-accent-1;
           font-size: 17px;
           cursor: pointer;
@@ -77,16 +81,16 @@
           right: 7px;
         }
 
-        .password__icon__css__invalid {
+        .password-icon-css-invalid {
           color: $color-primary;
         }
 
-        .password__icon__css__valid {
+        .password-icon-css-valid {
           color: $color-accent-6;
         }
       }
 
-      .forgot_password_css_inner {
+      .forgot-password-css-inner {
         display: flex;
         justify-content: flex-end;
 
@@ -95,7 +99,7 @@
         }
       }
 
-      .create__account_css {
+      .create-account-css {
         margin-top: 20px;
 
         p {
@@ -105,6 +109,17 @@
         }
       }
     }
+    .emailsend-inner-text{
+      h3{
+          font-size: 22px;
+      }
+      h6{
+        font-size: 18px;
+        color: $color-accent-2;
+        padding: 0 25px;
+
+      }
+  }
 
   }
 }

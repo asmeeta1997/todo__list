@@ -22,6 +22,8 @@ export class ForgotPasswordComponent implements OnInit {
   title = "Todo App";
   forgetImage = "../../../assets/images/forgetpassword.png";
   forgetImg = "Forget Image";
+  emailimage = "../../../assets/images/emailsend1.png";
+  emailimagealt="Email Send";
   submit: boolean = false;
 
   public passwordforgot!: FormGroup;
@@ -48,7 +50,6 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   forgotPass(form: NgForm) {
-    console.log(form);
     this.submit = true;
     if (this.passwordforgot.invalid) {
       return;
@@ -59,11 +60,10 @@ export class ForgotPasswordComponent implements OnInit {
           return a.email === this.passwordforgot.value.email;
         });
         if (user) {
-          this.toastr.success("Email Send Successfully");
-          this.router.navigate(["reset-password"]);
-          this.passwordforgot.reset();
+          // this.router.navigate(["/"]);
+          // this.passwordforgot.reset();
         } else {
-          this.toastr.error("User doesn't exist", "", {
+          this.toastr.error("Incorrect Email", "", {
             timeOut: 3000,
           });
         }
@@ -74,5 +74,28 @@ export class ForgotPasswordComponent implements OnInit {
         });
       }
     );
+  }
+  sendEmail(){
+    this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/signup").subscribe(
+      (res) => {
+        const user = res.find((a: any) => {
+          return a.email === this.passwordforgot.value.email;
+        });
+        if (user) {
+          this.router.navigate(["/"]);
+          this.passwordforgot.reset();
+        } else {
+          this.toastr.error("Incorrect Email", "", {
+            timeOut: 3000,
+          });
+        }
+      },
+      (err) => {
+        this.toastr.error("Something went wrong", "Main error", {
+          timeOut: 3000,
+        });
+      }
+    );
+
   }
 }

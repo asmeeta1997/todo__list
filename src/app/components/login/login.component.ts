@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     }
     this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/signup")
       .subscribe(res =>{
-        const user = res.find((a:any)=>{
+        const user = res.find((a:any):any=>{
           return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
         });
         this.authResponse = res;

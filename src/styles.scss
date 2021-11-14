@@ -45,3 +45,6 @@ $todo-list-theme: mat.define-light-theme((
 
 @import '/src/assets/sass/main.scss';
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

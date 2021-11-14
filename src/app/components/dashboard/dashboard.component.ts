@@ -3,7 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { TaskModel, ListNameModel } from './dashboard.model';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
-import { ApiService } from '../services/api.service';
+import { DashboardService } from '../services/dashboard.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,35 +20,34 @@ export class DashboardComponent implements OnInit {
   upcommingtask = "upcomming image";
   overduetask = "overduetask image";
 
-  currentDate: Date = new Date();
-
   formList !: FormGroup;
   formValue !: FormGroup;
   listModelObj: ListNameModel = new ListNameModel();
   taskModelObj: TaskModel = new TaskModel();
   listData !: any;
   taskData !: any;
+
   priorityList = [
     { id: 1, name: 'High' },
     { id: 2, name: 'Medium' },
     { id: 3, name: 'Low' }
   ];
-  counter:any ={
-    today:0,
-    upcomming:0,
-    overdue:0
-  }
 
+  currentDate = new Date();
+  taskDate:any;
+  todayTask: number = 0;
+  commingTask: number = 0;
+  overDueTask: number = 0;
 
 
   constructor(
     private formBuilder: FormBuilder,
-    private api: ApiService,
+    private dashboardService: DashboardService,
     private toastr: ToastrService,
-    private authService:AuthService,
+    private authService: AuthService,
   ) { }
 
-  
+
   ngOnInit(): void {
 
     //choose list name
@@ -62,10 +62,11 @@ export class DashboardComponent implements OnInit {
       taskname: new FormControl("", [Validators.required]),
       chooselist: new FormControl("", [Validators.required]),
       choosepriority: new FormControl("", [Validators.required]),
-      date: new FormControl("", [Validators.required]),
+      dateTime: new FormControl("", [Validators.required]),
 
     })
     this.getAllTask();
+
   }
 
   //choose list name details
@@ -75,29 +76,26 @@ export class DashboardComponent implements OnInit {
       return;
     }
     this.listModelObj.listname = this.formList.value.listname;
-    this.api.postList(this.listModelObj)
+    this.dashboardService.postList(this.listModelObj)
       .subscribe(res => {
         this.toastr.success('List Added Successfully');
-        let ref = document.getElementById('close')
-        ref?.click();
         this.formList.reset();
         this.getAllListName();
       },
         err => {
-          this.toastr.error('Something went wrong', 'Main error',{
+          this.toastr.error('Something went wrong', 'Main error', {
             timeOut: 3000,
           });
         })
   }
   getAllListName() {
-    this.api.getList()
+    this.dashboardService.getList()
       .subscribe(res => {
         this.listData = res;
       })
   }
 
   // task detils
-
   postTaskDetails() {
     if (this.formValue.invalid) {
       return;
@@ -105,39 +103,59 @@ export class DashboardComponent implements OnInit {
     this.taskModelObj.taskname = this.formValue.value.taskname;
     this.taskModelObj.chooselist = this.formValue.value.chooselist;
     this.taskModelObj.choosepriority = this.formValue.value.choosepriority;
-    this.taskModelObj.date = this.formValue.value.date;
+    this.taskModelObj.dateTime = this.formValue.value.dateTime;
 
-    this.api.postTask(this.taskModelObj)
+    this.dashboardService.postTask(this.taskModelObj)
       .subscribe(res => {
         this.toastr.success('Task Added Successfully');
-        let ref = document.getElementById('cancel')
-        ref?.click();
         this.formValue.reset();
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
         this.getAllTask();
-      },
+      }
+      ,
         err => {
-          this.toastr.error('Something went wrong', 'Main error',{
+          this.toastr.error('Something went wrong', 'Main error', {
             timeOut: 3000,
           });
         })
 
   }
   getAllTask() {
-    this.api.getTask()
+    this.dashboardService.getTask()
       .subscribe(res => {
         this.taskData = res;
+        console.log(this.taskData)
+        for(let task of this.taskData){
+          this.taskDate= task.dateTime;
+          console.log(this.taskDate)
+          console.log(this.currentDate)
+          if(this.taskDate = this.currentDate){
+            this.todayTask++;
+          }
+          if(this.taskDate > this.currentDate){
+            this.commingTask++;
+          }
+          if(this.taskDate < this.currentDate){
+            this.overDueTask++;
+          }
+        }
       })
   }
-  deleteTask(row: any) {
-    this.api.deleteTask(row)
+  deleteTask(row:number){
+    this.dashboardService.deleteTask(row)
       .subscribe(res => {
         this.toastr.success('Task Deleted Successfully');
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
         this.getAllTask();
       })
   }
-  loggedOut(){
+  loggedOut() {
     this.authService.logout();
-   }  
+  }
 }
 
 
