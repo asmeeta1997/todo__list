@@ -33,11 +33,12 @@ export class DashboardComponent implements OnInit {
     { id: 3, name: 'Low' }
   ];
 
-  currentDate = new Date();
+  // currentDate = new Date();
   taskDate:any;
   todayTask: number = 0;
   commingTask: number = 0;
   overDueTask: number = 0;
+  currentDate= formatDate(new Date(),'yyyy-M-d','en_US');
 
 
   constructor(
@@ -111,7 +112,7 @@ export class DashboardComponent implements OnInit {
         this.formValue.reset();
         setTimeout(() => {
           location.reload();
-        }, 3000);
+        }, 2000);
         this.getAllTask();
       }
       ,
@@ -126,18 +127,15 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getTask()
       .subscribe(res => {
         this.taskData = res;
-        console.log(this.taskData)
         for(let task of this.taskData){
-          this.taskDate= task.dateTime;
-          console.log(this.taskDate)
-          console.log(this.currentDate)
-          if(this.taskDate = this.currentDate){
+          this.taskDate= formatDate(task.dateTime,'yyyy-M-d','en_US');
+          if(this.taskDate == this.currentDate){
             this.todayTask++;
           }
-          if(this.taskDate > this.currentDate){
+         if(this.taskDate > this.currentDate){
             this.commingTask++;
           }
-          if(this.taskDate < this.currentDate){
+         if(this.taskDate < this.currentDate){
             this.overDueTask++;
           }
         }

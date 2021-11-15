@@ -164,7 +164,7 @@
   </section>
   <section class="container mt-4">
     <div class="row">
-      <div class="col-lg-5">
+      <div class="col-lg-4">
         <div class="inner-section-task-list">
           <h6>Today's task</h6>
           <p>{{ todayTask }}</p>
@@ -174,7 +174,7 @@
             <table class="table">
               <tbody>
                 <tr *ngFor="let row of taskData">
-                  <td>
+                  <td *ngIf="(row.dateTime | date:'yyyy-M-d') == currentDate">
                     <div class="form-check">
                       <input class="form-check-input custom-form-check" type="checkbox" value="" id="flexCheckChecked"
                         (click)="deleteTask(row.id)" />
@@ -186,7 +186,7 @@
                       </label>
                     </div>
                   </td>
-                  <td>
+                  <td *ngIf="(row.dateTime | date:'yyyy-M-d') == currentDate">
                     <div class="priority-custom-css">
                       <span class="priority-custom-css-inside" [ngClass]="{
                           my_class_high: row.choosepriority == 'High',
@@ -201,7 +201,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-7">
+      <div class="col-lg-8">
         <div class="inner-section-task-list">
           <h6>List Names</h6>
           <div>
