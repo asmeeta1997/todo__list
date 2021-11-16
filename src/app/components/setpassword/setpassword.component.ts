@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CreateAccountModel } from '../create-account/create-account.model';
+import { SignupService } from '../services/signup.service';
 import { MustMatchPassword } from '../validators/mustMatchPassword';
-
 @Component({
   selector: 'app-setpassword',
   templateUrl: './setpassword.component.html',
@@ -20,15 +21,19 @@ export class SetpasswordComponent implements OnInit {
   hide = true;
   hide2=true;
 
+  createAccountModelObj:CreateAccountModel = new CreateAccountModel();
+
+
   get all() {
     return this.setPassword.controls
   }
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
     private router:Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private signupService :SignupService,
+
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +51,8 @@ export class SetpasswordComponent implements OnInit {
     if (this.setPassword.invalid) {
       return;
     }
-    this.http.post<any>("https://617b7a78d842cf001711befc.mockapi.io/signup", this.setPassword.value)
+    this.createAccountModelObj.fullname = this.setPassword.value.fullname;
+    this.signupService.postSignup(this.createAccountModelObj)
       .subscribe(res =>{
         this.toastr.success('Signup Successfully');
         this.router.navigate(['login'])

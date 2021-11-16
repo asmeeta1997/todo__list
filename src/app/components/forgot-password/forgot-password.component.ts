@@ -9,6 +9,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { SignupService } from "../services/signup.service";
 
 @Component({
   selector: "app-forgot-password",
@@ -36,7 +37,8 @@ export class ForgotPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private signupService: SignupService
   ) {}
 
   ngOnInit(): void {
@@ -54,29 +56,10 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.passwordforgot.invalid) {
       return;
     }
-    this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/signup").subscribe(
-      (res) => {
-        const user = res.find((a: any) => {
-          return a.email === this.passwordforgot.value.email;
-        });
-        if (user) {
-          // this.router.navigate(["/"]);
-          // this.passwordforgot.reset();
-        } else {
-          this.toastr.error("Incorrect Email", "", {
-            timeOut: 3000,
-          });
-        }
-      },
-      (err) => {
-        this.toastr.error("Something went wrong", "Main error", {
-          timeOut: 3000,
-        });
-      }
-    );
   }
   sendEmail(){
-    this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/signup").subscribe(
+    this.signupService.getSignup()
+    .subscribe(
       (res) => {
         const user = res.find((a: any) => {
           return a.email === this.passwordforgot.value.email;

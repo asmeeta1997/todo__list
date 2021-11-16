@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SignupService } from '../services/signup.service';
+import { CreateAccountModel } from './create-account.model';
 
 @Component({
   selector: 'app-create-account',
@@ -15,10 +16,12 @@ export class CreateAccountComponent implements OnInit {
   public createAccount !: FormGroup;
   submit: boolean = false;
 
+  createAccountModelObj:CreateAccountModel = new CreateAccountModel();
+
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private signupService :SignupService
     ){
   }
 
@@ -40,13 +43,17 @@ export class CreateAccountComponent implements OnInit {
     if (this.createAccount.invalid) {
       return;
     }
-    this.http.post<any>("https://617b7a78d842cf001711befc.mockapi.io/signup", this.createAccount.value)
+    this.createAccountModelObj.fullname = this.createAccount.value.fullname;
+    this.createAccountModelObj.date = this.createAccount.value.date;
+    this.createAccountModelObj.phonenumber = this.createAccount.value.phonenumber;
+    this.createAccountModelObj.email = this.createAccount.value.email;
+    this.signupService.postSignup(this.createAccountModelObj)
       .subscribe(res =>{
       this.createAccount.reset();
       this.router.navigate(['set-password'])
     }, err=>{
       alert("Something went wrong")
+      console.log(err)
     })
-
   }
 }

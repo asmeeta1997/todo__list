@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators, FormBuilder, NgForm } from '@angula
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'
 import { AuthService } from '../services/auth.service';
+import { SignupService } from '../services/signup.service';
 
 
 @Component({
@@ -28,10 +29,10 @@ export class LoginComponent implements OnInit {
   }
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
     private router : Router,
     private toastr: ToastrService,
-    private auth: AuthService
+    private auth: AuthService,
+    private signupService: SignupService
   ) { }
 
   get all() {
@@ -52,14 +53,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.http.get<any>("https://617b7a78d842cf001711befc.mockapi.io/signup")
+     this.signupService.getSignup()
       .subscribe(res =>{
         const user = res.find((a:any):any=>{
           return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
         });
         this.authResponse = res;
         if(user){
-          localStorage.setItem('token', res.token);
           localStorage.setItem("SessionUser", this.users);
           this.toastr.success('Login Successfully');
           this.loginForm.reset();

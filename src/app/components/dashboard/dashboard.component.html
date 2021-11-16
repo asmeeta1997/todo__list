@@ -189,9 +189,9 @@
                   <td *ngIf="(row.dateTime | date:'yyyy-M-d') == currentDate">
                     <div class="priority-custom-css">
                       <span class="priority-custom-css-inside" [ngClass]="{
-                          my_class_high: row.choosepriority == 'High',
-                          my_class_low: row.choosepriority == 'Low',
-                          my_class_medium: row.choosepriority == 'Medium'
+                          myclasshigh: row.choosepriority === 'High',
+                          myclasslow: row.choosepriority === 'Low',
+                          myclassmedium: row.choosepriority === 'Medium'
                         }">{{ row.choosepriority }}</span>
                     </div>
                   </td>
@@ -278,9 +278,9 @@
                           <td>
                             <div class="priority-custom-css mt-0">
                               <span class="priority-custom-css-inside" [ngClass]="{
-                                  my_class_high: row.choosepriority == 'High',
-                                  my_class_low: row.choosepriority == 'Low',
-                                  my_class_medium: row.choosepriority == 'Medium'
+                                  myclasshigh: row.choosepriority == 'High',
+                                  myclasslow: row.choosepriority == 'Low',
+                                  myclassmedium: row.choosepriority == 'Medium'
                                 }">{{ row.choosepriority }}</span>
                             </div>
                           </td>

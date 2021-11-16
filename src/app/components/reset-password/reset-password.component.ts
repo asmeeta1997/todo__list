@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SignupService } from '../services/signup.service';
 import { MustMatchPassword } from '../validators/mustMatchPassword';
+import { ResetPasswordModel } from './reset-password.model';
 
 
 @Component({
@@ -22,6 +24,8 @@ export class ResetPasswordComponent implements OnInit {
   hide =  true;
   hide2 = true;
 
+  resetPasswordModelObj:ResetPasswordModel = new ResetPasswordModel ();
+
   get all() {
     return this.resetPassword.controls
   }
@@ -29,8 +33,8 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private http: HttpClient,
     private toastr: ToastrService,
+    private signupService :SignupService
 
   ) { }
 
@@ -48,7 +52,9 @@ export class ResetPasswordComponent implements OnInit {
     if (this.resetPassword.invalid) {
       return;
     }
-    this.http.post<any>("https://617b7a78d842cf001711befc.mockapi.io/resetpassword", this.resetPassword.value)
+    this.resetPasswordModelObj.password = this.resetPassword.value.password;
+    this.resetPasswordModelObj.confirmpassword = this.resetPassword.value.confirmpassword;
+    this.signupService.postResetPassword(this.resetPasswordModelObj)
       .subscribe(res =>{
         this.toastr.success('ResetPassword Successfully');
         this.router.navigate(['login'])
