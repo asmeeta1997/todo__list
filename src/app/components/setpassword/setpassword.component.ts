@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MustMatchPassword } from '../validators/mustMatchPassword';
 
 @Component({
   selector: 'app-setpassword',
@@ -36,24 +37,8 @@ export class SetpasswordComponent implements OnInit {
       confirmpassword: new FormControl("", [ Validators.required])
     },
     {
-      validators:this.mustMatch('password','confirmpassword')
+      validators:MustMatchPassword('password','confirmpassword')
     })
-  }
-  mustMatch(controlName:string,matchingControlName:string){
-    return(formGroup:FormGroup)=>{
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
-      if(matchingControl.errors && !matchingControl.errors){
-        return
-      }
-      if(control.value !== matchingControl.value){
-        matchingControl.setErrors({mustMatch:true})
-      }
-      else{
-        matchingControl.setErrors(null);
-      }
-    }
-
   }
 
   signUp(form:NgForm) {
