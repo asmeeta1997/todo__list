@@ -14,8 +14,8 @@ export class AuthService {
    private router : Router
    ) { }
 
-  login(email: string, password: string):Observable<any> {
-      return this.http.post<any>(`http://localhost:4200/login`,{
+  login(email: string, password: string){
+      return this.http.post(`http://localhost:4200/login`,{
          email:email,
          password:password
      });

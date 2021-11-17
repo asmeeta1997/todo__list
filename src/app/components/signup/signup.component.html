@@ -10,7 +10,11 @@
               <p>Create an account to get started with TODO APP</p>
             </div>
             <div>
-              <form #accCreate="ngForm" [formGroup]="createAccount" (ngSubmit)="signUp(accCreate.value)">
+              <form
+                #accountCreate="ngForm"
+                [formGroup]="createAccount"
+                (ngSubmit)="signUp(accountCreate.value)"
+              >
                 <div class="mb-3">
                   <label for="name" class="form-label">Full Name</label>
                   <div class="responsive-icon">
@@ -24,15 +28,15 @@
                     />
                     <i class="fas fa-user main-icon-form-inner"></i>
                   </div>
-                  <div *ngIf="submit && all.fullname.errors">
+                  <div *ngIf="submit && f.fullname.errors">
                     <p
-                      *ngIf="all.fullname.errors.required"
+                      *ngIf="f.fullname.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
-                      *ngIf="all.fullname.errors.minlength"
+                      *ngIf="f.fullname.errors.minlength"
                       class="error-in-validation"
                     >
                       Name shoule be more than 4 letters
@@ -85,9 +89,9 @@
                     />
                     <!-- <i class="fas fa-calendar-week main-icon-form-inner"></i> -->
                   </div>
-                  <div *ngIf="submit && all.date.errors">
+                  <div *ngIf="submit && f.date.errors">
                     <p
-                      *ngIf="all.date.errors.required"
+                      *ngIf="f.date.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
@@ -97,30 +101,30 @@
                 <div class="mb-3">
                   <label for="number" class="form-label">Phone</label>
                   <div class="">
-                  <div class="responsive-icon">
-                    <input
-                      type="number"
-                      class="form-control form-css"
-                      placeholder="Enter your number"
-                      formControlName="phonenumber"
-                      name="phonenumber"
-                      required
-                    />
-                    <i class="fas fa-phone-alt main-icon-form-inner"></i>
+                    <div class="responsive-icon">
+                      <input
+                        type="number"
+                        class="form-control form-css"
+                        placeholder="Enter your number"
+                        formControlName="phonenumber"
+                        name="phonenumber"
+                        required
+                      />
+                      <i class="fas fa-phone-alt main-icon-form-inner"></i>
+                    </div>
                   </div>
-                </div>
-                  <div *ngIf="submit && all.phonenumber.errors">
+                  <div *ngIf="submit && f.phonenumber.errors">
                     <p
-                      *ngIf="all.phonenumber.errors.required"
+                      *ngIf="f.phonenumber.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
-                      *ngIf="all.phonenumber.errors.pattern"
+                      *ngIf="f.phonenumber.errors.pattern"
                       class="error-in-validation"
                     >
-                    Invalid phone number.
+                      Invalid phone number.
                     </p>
                   </div>
                 </div>
@@ -135,26 +139,37 @@
                       name="email"
                       required
                     />
-                    <i class="fas fa-times password-icon-css-invalid" matSuffix *ngIf="createAccount.controls['email'].invalid && createAccount.controls['email'].touched"></i>
-                    <i class="fas fa-check password-icon-css-valid" matSuffix *ngIf="createAccount.controls['email'].valid"></i>
+                    <i
+                      class="fas fa-times password-icon-css-invalid"
+                      matSuffix
+                      *ngIf="
+                        createAccount.controls['email'].invalid &&
+                        createAccount.controls['email'].touched
+                      "
+                    ></i>
+                    <i
+                      class="fas fa-check password-icon-css-valid"
+                      matSuffix
+                      *ngIf="createAccount.controls['email'].valid"
+                    ></i>
                     <i class="fas fa-envelope main-icon-form-inner"></i>
                   </div>
-                  <div *ngIf="submit && all.email.errors" >
+                  <div *ngIf="submit && f.email.errors">
                     <p
-                      *ngIf="all.email.errors.required"  
+                      *ngIf="f.email.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
-                    <p *ngIf="all.email.errors.pattern" class="error-in-validation">Email must be a valid</p>
+                    <p
+                      *ngIf="f.email.errors.pattern"
+                      class="error-in-validation"
+                    >
+                      Email must be a valid
+                    </p>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  class="btn btn-danger w-100"          
-                >
-                  Next
-                </button>
+                <button type="submit" class="btn btn-danger w-100" (click)="createAccounts()">Next</button>
               </form>
               <div class="create-account-css">
                 <p>

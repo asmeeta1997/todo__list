@@ -26,7 +26,7 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPasswordModelObj:ResetPasswordModel = new ResetPasswordModel ();
 
-  get all() {
+  get f() {
     return this.resetPassword.controls
   }
 
@@ -39,19 +39,26 @@ export class ResetPasswordComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initializeResetPassword();
+  }
+  
+  initializeResetPassword():void{
     this.resetPassword = this.formBuilder.group({
       password: new FormControl("",   [ Validators.required, Validators.minLength(8)]),
       confirmpassword: new FormControl("", [ Validators.required,])
-    },
-    {
+    })
+    this.resetPassword = this.formBuilder.group({
       validators:MustMatchPassword('password','confirmpassword')
     })
   }
-  passwordReset(form:NgForm) {
+
+  passwordReset(form:NgForm):void {
     this.submit = true;
     if (this.resetPassword.invalid) {
       return;
     }
+  }
+  resetPasswords():void{
     this.resetPasswordModelObj.password = this.resetPassword.value.password;
     this.resetPasswordModelObj.confirmpassword = this.resetPassword.value.confirmpassword;
     this.signupService.postResetPassword(this.resetPasswordModelObj)
@@ -64,7 +71,6 @@ export class ResetPasswordComponent implements OnInit {
         timeOut: 3000,
       });
     })
-
   }
 
 }

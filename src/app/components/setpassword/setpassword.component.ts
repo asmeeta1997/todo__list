@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CreateAccountModel } from '../create-account/create-account.model';
+import { CreateAccountModel } from '../signup/signup.model';
 import { SignupService } from '../services/signup.service';
 import { MustMatchPassword } from '../validators/mustMatchPassword';
 @Component({
@@ -24,7 +24,7 @@ export class SetpasswordComponent implements OnInit {
   createAccountModelObj:CreateAccountModel = new CreateAccountModel();
 
 
-  get all() {
+  get f() {
     return this.setPassword.controls
   }
 
@@ -37,20 +37,26 @@ export class SetpasswordComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initializeSetPassword();
+  }
+  
+  initializeSetPassword():void{
     this.setPassword = this.formBuilder.group({
       password: new FormControl("",   [ Validators.required, Validators.minLength(8)]),
       confirmpassword: new FormControl("", [ Validators.required])
-    },
-    {
+    })
+    this.setPassword = this.formBuilder.group({
       validators:MustMatchPassword('password','confirmpassword')
     })
   }
 
-  signUp(form:NgForm) {
+  signUp(form:NgForm):void {
     this.submit = true;
     if (this.setPassword.invalid) {
-      return;
+      return ;
     }
+  }
+  createdAccount():void{
     this.createAccountModelObj.fullname = this.setPassword.value.fullname;
     this.signupService.postSignup(this.createAccountModelObj)
       .subscribe(res =>{
@@ -62,7 +68,6 @@ export class SetpasswordComponent implements OnInit {
         timeOut: 3000,
       });
     })
-
   }
 
 }

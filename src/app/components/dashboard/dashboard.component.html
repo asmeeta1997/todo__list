@@ -7,13 +7,15 @@
         </a>
         <div class="d-flex justify-content-end">
           <div class="d-flex">
-            <ul class="
+            <ul
+              class="
                 navbar-nav
                 me-auto
                 mb-2 mb-lg-0
                 d-flex
                 align-items-baseline
-              ">
+              "
+            >
               <li class="nav-item">
                 <div class="inner-section-task-list">
                   <a class="nav-link active" aria-current="page" href="#">
@@ -22,7 +24,10 @@
                 </div>
               </li>
               <li class="nav-item">
-                <button class="nav-link logout-button-demo" (click)="loggedOut()">
+                <button
+                  class="nav-link logout-button-demo"
+                  (click)="loggedOut()"
+                >
                   <i class="fas fa-sign-out-alt me-1"></i>Logout
                 </button>
               </li>
@@ -44,36 +49,69 @@
         </div>
         <div>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-danger w-100 btn-custom-modal" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
+          <button
+            type="button"
+            class="btn btn-danger w-100 btn-custom-modal"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
             Create new Task
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title cusom-css-h5-modal" id="exampleModalLabel">
+                  <h5
+                    class="modal-title cusom-css-h5-modal"
+                    id="exampleModalLabel"
+                  >
                     Create List
                   </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
                 <form [formGroup]="formValue">
                   <div class="modal-body">
                     <div>
                       <div class="mb-3">
-                        <label for="taskname" class="form-label">Task name</label>
-                        <input type="text" class="form-control" id="taskname" placeholder="Enter task name"
-                          formControlName="taskname" required />
+                        <label for="taskname" class="form-label"
+                          >Task name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="taskname"
+                          placeholder="Enter task name"
+                          formControlName="taskname"
+                          required
+                        />
                       </div>
                       <div class="row">
                         <div class="col-lg-4">
                           <div>
-                            <label for="chooselist" class="form-label">Choose list</label>
-                            <select class="form-select" id="chooselist" aria-label="Default select example"
-                              formControlName="chooselist" name="chooselist" required>
+                            <label for="chooselist" class="form-label"
+                              >Choose list</label
+                            >
+                            <select
+                              class="form-select"
+                              id="chooselist"
+                              aria-label="Default select example"
+                              formControlName="chooselist"
+                              name="chooselist"
+                              required
+                            >
                               <option selected hidden>Choose list name</option>
                               <option *ngFor="let list of listData">
                                 {{ list.listname }}
@@ -84,9 +122,16 @@
                         <div class="col-lg-4">
                           <div>
                             <label for="choosepriority" class="form-label">
-                              Choose priority</label>
-                            <select class="form-select" id="choosepriority" aria-label="Default select example"
-                              formControlName="choosepriority" name="choosepriority" required>
+                              Choose priority</label
+                            >
+                            <select
+                              class="form-select"
+                              id="choosepriority"
+                              aria-label="Default select example"
+                              formControlName="choosepriority"
+                              name="choosepriority"
+                              required
+                            >
                               <option selected hidden>Choose priority</option>
                               <option *ngFor="let list of priorityList">
                                 {{ list.name }}
@@ -96,19 +141,37 @@
                         </div>
                         <div class="col-lg-4">
                           <div>
-                            <label for="dateandtime" class="form-label">Select date</label>
-                            <input type="datetime-local" class="form-control" id="dateandtime"
-                              placeholder="Choose date and time" formControlName="dateTime" required />
+                            <label for="dateandtime" class="form-label"
+                              >Select date</label
+                            >
+                            <input
+                              type="datetime-local"
+                              class="form-control"
+                              id="dateandtime"
+                              placeholder="Choose date and time"
+                              formControlName="dateTime"
+                              required
+                            />
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="cancel">
+                    <button
+                      type="reset"
+                      class="btn btn-outline-secondary"
+                      data-bs-dismiss="modal"
+                      id="cancel"
+                    >
                       Cancel
                     </button>
-                    <button type="reset" class="btn btn-danger" (click)="postTaskDetails()" data-bs-dismiss="modal">
+                    <button
+                      type="reset"
+                      class="btn btn-danger"
+                      (click)="postTaskDetails()"
+                      data-bs-dismiss="modal"
+                    >
                       Add task
                     </button>
                   </div>
@@ -129,7 +192,11 @@
         <div class="col-lg-4">
           <div class="part-overview-section">
             <div>
-              <img src="{{ todaytask }}" alt="{{ todaytas }}" class="img-fluid me-4" />
+              <img
+                src="{{ todaytask }}"
+                alt="{{ todaytas }}"
+                class="img-fluid me-4"
+              />
             </div>
             <div>
               <h6>Today's tasks</h6>
@@ -140,7 +207,11 @@
         <div class="col-lg-4">
           <div class="part-overview-section">
             <div>
-              <img src="{{ upcommingtasks }}" alt="{{ upcommingtask }}" class="img-fluid me-4" />
+              <img
+                src="{{ upcommingtasks }}"
+                alt="{{ upcommingtask }}"
+                class="img-fluid me-4"
+              />
             </div>
             <div>
               <h6>Upcomming tasks</h6>
@@ -151,7 +222,11 @@
         <div class="col-lg-4">
           <div class="part-overview-section">
             <div>
-              <img src="{{ overduetasks }}" alt="{{ overduetask }}" class="img-fluid me-4" />
+              <img
+                src="{{ overduetasks }}"
+                alt="{{ overduetask }}"
+                class="img-fluid me-4"
+              />
             </div>
             <div>
               <h6>Overdue tasks</h6>
@@ -174,25 +249,36 @@
             <table class="table">
               <tbody>
                 <tr *ngFor="let row of taskData">
-                  <td *ngIf="(row.dateTime | date:'yyyy-M-d') == currentDate">
+                  <td *ngIf="(row.dateTime | date: 'yyyy-M-d') == currentDate">
                     <div class="form-check">
-                      <input class="form-check-input custom-form-check" type="checkbox" value="" id="flexCheckChecked"
-                        (click)="deleteTask(row.id)" />
+                      <input
+                        class="form-check-input custom-form-check"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckChecked"
+                        (click)="deleteTask(row.id)"
+                      />
                       <label class="form-check-label custom-form-check_label">
                         <div class="text-capitalize">{{ row.taskname }}</div>
                         <div>
-                          <p class="inner-checkbox-chooselist-p">{{ row.chooselist }}</p>
+                          <p class="inner-checkbox-chooselist-p">
+                            {{ row.chooselist }}
+                          </p>
                         </div>
                       </label>
                     </div>
                   </td>
-                  <td *ngIf="(row.dateTime | date:'yyyy-M-d') == currentDate">
+                  <td *ngIf="(row.dateTime | date: 'yyyy-M-d') == currentDate">
                     <div class="priority-custom-css">
-                      <span class="priority-custom-css-inside" [ngClass]="{
+                      <span
+                        class="priority-custom-css-inside"
+                        [ngClass]="{
                           myclasshigh: row.choosepriority === 'High',
                           myclasslow: row.choosepriority === 'Low',
                           myclassmedium: row.choosepriority === 'Medium'
-                        }">{{ row.choosepriority }}</span>
+                        }"
+                        >{{ row.choosepriority }}</span
+                      >
                     </div>
                   </td>
                 </tr>
@@ -206,38 +292,72 @@
           <h6>List Names</h6>
           <div>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-danger w-100 btn-custom-modal" data-bs-toggle="modal"
-              data-bs-target="#exampleModal2">
+            <button
+              type="button"
+              class="btn btn-outline-danger w-100 btn-custom-modal"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal2"
+            >
               Create new List
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
-              aria-hidden="true">
+            <div
+              class="modal fade"
+              id="exampleModal2"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel2"
+              aria-hidden="true"
+            >
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title cusom-css-h5-modal" id="exampleModalLabel2">
+                    <h5
+                      class="modal-title cusom-css-h5-modal"
+                      id="exampleModalLabel2"
+                    >
                       Create task
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
                   </div>
                   <form [formGroup]="formList">
                     <div class="modal-body">
                       <div>
                         <div class="mb-3">
-                          <label for="listname" class="form-label">List name</label>
-                          <input type="text" class="form-control" id="listname" placeholder="Enter list name"
-                            formControlName="listname" name="listname" required />
+                          <label for="listname" class="form-label"
+                            >List name</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="listname"
+                            placeholder="Enter list name"
+                            formControlName="listname"
+                            name="listname"
+                            required
+                          />
                         </div>
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                      <button
+                        type="reset"
+                        class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal"
+                      >
                         Cancel
                       </button>
-                      <button type="reset" class="btn btn-danger" (click)="postListnameDetails()"
-                        data-bs-dismiss="modal">
+                      <button
+                        type="reset"
+                        class="btn btn-danger"
+                        (click)="postListnameDetails()"
+                        data-bs-dismiss="modal"
+                      >
                         Add list
                       </button>
                     </div>
@@ -261,14 +381,25 @@
                 </mat-expansion-panel-header>
                 <div class="main-table-inner-dashboard">
                   <div class="table-responsive" *ngFor="let row of taskData">
-                    <table class="table" *ngIf="list.listname === row.chooselist">
+                    <table
+                      class="table"
+                      *ngIf="list.listname === row.chooselist"
+                    >
                       <tbody>
                         <tr>
                           <td>
                             <div class="form-check">
-                              <input class="form-check-input custom-form-check" type="checkbox" value=""
-                                id="flexCheckChecked2" (click)="deleteTask(row.id)" />
-                              <label class="form-check-label" for="flexCheckChecked2">
+                              <input
+                                class="form-check-input custom-form-check"
+                                type="checkbox"
+                                value=""
+                                id="flexCheckChecked2"
+                                (click)="deleteTask(row.id)"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexCheckChecked2"
+                              >
                                 <div class="text-capitalize">
                                   {{ row.taskname }}
                                 </div>
@@ -277,16 +408,20 @@
                           </td>
                           <td>
                             <div class="priority-custom-css mt-0">
-                              <span class="priority-custom-css-inside" [ngClass]="{
+                              <span
+                                class="priority-custom-css-inside"
+                                [ngClass]="{
                                   myclasshigh: row.choosepriority == 'High',
                                   myclasslow: row.choosepriority == 'Low',
                                   myclassmedium: row.choosepriority == 'Medium'
-                                }">{{ row.choosepriority }}</span>
+                                }"
+                                >{{ row.choosepriority }}</span
+                              >
                             </div>
                           </td>
                           <td>
                             <div class="text-end">
-                              {{ row.dateTime | date:'d MMMM h:mm a'}}
+                              {{ row.dateTime | date: "d MMMM h:mm a" }}
                             </div>
                           </td>
                         </tr>

@@ -10,7 +10,12 @@
               <p>Welcome back! Please login to your account</p>
             </div>
             <div>
-              <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)" [formGroup]="loginForm" name="loginForm">
+              <form
+                #authForm="ngForm"
+                (ngSubmit)="onSubmit(authForm.value)"
+                [formGroup]="loginForm"
+                name="loginForm"
+              >
                 <div class="mb-3">
                   <label for="email" class="form-label">Email address</label>
                   <div class="responsive-icon">
@@ -23,19 +28,35 @@
                       placeholder="Enter your email address"
                       required
                     />
-                    <i class="fas fa-times password-icon-css-invalid" matSuffix *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"></i>
-                    <i class="fas fa-check password-icon-css-valid" matSuffix *ngIf="loginForm.controls['email'].valid"></i>
+                    <i
+                      class="fas fa-times password-icon-css-invalid"
+                      matSuffix
+                      *ngIf="
+                        loginForm.controls['email'].invalid &&
+                        loginForm.controls['email'].touched
+                      "
+                    ></i>
+                    <i
+                      class="fas fa-check password-icon-css-valid"
+                      matSuffix
+                      *ngIf="loginForm.controls['email'].valid"
+                    ></i>
                     <i class="fas fa-envelope main-icon-form-inner"></i>
                   </div>
-                  <div *ngIf="submit && all.email.errors" >
+                  <div *ngIf="submit && f.email.errors">
                     <p
-                      *ngIf="all.email.errors.required"  
+                      *ngIf="f.email.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
 
-                    <p *ngIf="all.email.errors.pattern" class="error-in-validation">Email must be a valid</p>
+                    <p
+                      *ngIf="f.email.errors.pattern"
+                      class="error-in-validation"
+                    >
+                      Email must be a valid
+                    </p>
                   </div>
                 </div>
                 <div class="mb-3">
@@ -44,39 +65,40 @@
                     <input
                       formControlName="password"
                       name="password"
-                      [type]="hide?'password':'text'"
+                      [type]="hide ? 'password' : 'text'"
                       class="form-control form-css"
                       placeholder="Enter your Password"
                       id="password"
                       required
                     />
-                    <i class="material-icons password-icon-css" matSuffix (click)="hide = !hide">
-                      {{hide ? 'visibility' : 'visibility_off'}}
+                    <i
+                      class="material-icons password-icon-css"
+                      matSuffix
+                      (click)="hide = !hide"
+                    >
+                      {{ hide ? "visibility" : "visibility_off" }}
                     </i>
                     <i class="fas fa-lock main-icon-form-inner"></i>
                   </div>
-                  <div *ngIf="submit && all.password.errors">
+                  <div *ngIf="submit && f.password.errors">
                     <p
-                      *ngIf="all.password.errors.required"
+                      *ngIf="f.password.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
-                      *ngIf="all.password.errors.minlength"
+                      *ngIf="f.password.errors.minlength"
                       class="error-in-validation"
                     >
-                    Must be atleast 8 characters!
+                      Must be atleast 8 characters!
                     </p>
                   </div>
                 </div>
                 <div class="forgot-password-css-inner">
                   <p><a routerLink="/forget-password">Forgot Password?</a></p>
                 </div>
-                <button
-                  type="submit"
-                  class="btn btn-danger w-100"
-                >
+                <button type="submit" class="btn btn-danger w-100" (click)="loggedIn()">
                   Login
                 </button>
                 <div class="create-account-css">

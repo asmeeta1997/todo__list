@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   public loginForm !: FormGroup;
   submit: boolean = false;
   isLoginMode = true;
-  authResponse: any;
+  authResponse=[];
   users = "token";
   hide= true;
 
@@ -35,11 +35,14 @@ export class LoginComponent implements OnInit {
     private signupService: SignupService
   ) { }
 
-  get all() {
-    return this.loginForm.controls
+  get f() {
+    return this.loginForm.controls 
   }
 
   ngOnInit(): void {
+    this.initializeLoginForm();
+  }
+  initializeLoginForm():void{
     this.loginForm = this.formBuilder.group({
       email: new FormControl("", [Validators.required, Validators.email,Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]),
       password: new FormControl("", [Validators.required, Validators.minLength(8)])
@@ -48,14 +51,16 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['home'])
     }
   }
-  onSubmit(form:NgForm) {
+  onSubmit(form:NgForm):void {
     this.submit = true;
     if (this.loginForm.invalid) {
       return;
     }
-     this.signupService.getSignup()
+  }
+  loggedIn():void{
+    this.signupService.getSignup()
       .subscribe(res =>{
-        const user = res.find((a:any):any=>{
+        const user = res.find((a:any)=>{
           return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
         });
         this.authResponse = res;

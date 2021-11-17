@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,7 +32,7 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    CreateAccountComponent,
+    SignupComponent,
     DashboardComponent,
     SetpasswordComponent,
     ResetPasswordComponent,

@@ -5,7 +5,7 @@ import {
   FormGroup,
   FormControl,
   Validators,
-  NgForm,
+  NgForm
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
@@ -29,7 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   public passwordforgot!: FormGroup;
 
-  get all() {
+  get f() {
     return this.passwordforgot.controls;
   }
 
@@ -42,6 +42,9 @@ export class ForgotPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.initializeForgotPassword();
+  }
+  initializeForgotPassword():void{
     this.passwordforgot = this.formBuilder.group({
       email: new FormControl("", [
         Validators.required,
@@ -51,13 +54,13 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-  forgotPass(form: NgForm) {
+  forgotPassword(form: NgForm):void {
     this.submit = true;
     if (this.passwordforgot.invalid) {
       return;
     }
   }
-  sendEmail(){
+  sendEmail():void{
     this.signupService.getSignup()
     .subscribe(
       (res) => {

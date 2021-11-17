@@ -34,11 +34,11 @@ export class DashboardComponent implements OnInit {
   ];
 
   // currentDate = new Date();
-  taskDate:any;
+  taskDate: string = "";
   todayTask: number = 0;
   commingTask: number = 0;
   overDueTask: number = 0;
-  currentDate= formatDate(new Date(),'yyyy-M-d','en_US');
+  currentDate = formatDate(new Date(), 'yyyy-M-d', 'en_US');
 
 
   constructor(
@@ -50,15 +50,17 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.initializeListName();
+    this.initializeTaskList();
+  }
 
-    //choose list name
+  initializeListName():void {
     this.formList = this.formBuilder.group({
       listname: new FormControl("", [Validators.required])
     })
     this.getAllListName();
-
-    //task list 
-
+  }
+  initializeTaskList():void {
     this.formValue = this.formBuilder.group({
       taskname: new FormControl("", [Validators.required]),
       chooselist: new FormControl("", [Validators.required]),
@@ -67,12 +69,11 @@ export class DashboardComponent implements OnInit {
 
     })
     this.getAllTask();
-
   }
 
   //choose list name details
 
-  postListnameDetails() {
+  postListnameDetails():void {
     if (this.formList.invalid) {
       return;
     }
@@ -89,7 +90,7 @@ export class DashboardComponent implements OnInit {
           });
         })
   }
-  getAllListName() {
+  getAllListName():void {
     this.dashboardService.getList()
       .subscribe(res => {
         this.listData = res;
@@ -97,7 +98,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // task detils
-  postTaskDetails() {
+  postTaskDetails():void {
     if (this.formValue.invalid) {
       return;
     }
@@ -105,7 +106,6 @@ export class DashboardComponent implements OnInit {
     this.taskModelObj.chooselist = this.formValue.value.chooselist;
     this.taskModelObj.choosepriority = this.formValue.value.choosepriority;
     this.taskModelObj.dateTime = this.formValue.value.dateTime;
-
     this.dashboardService.postTask(this.taskModelObj)
       .subscribe(res => {
         this.toastr.success('Task Added Successfully');
@@ -115,7 +115,7 @@ export class DashboardComponent implements OnInit {
         }, 2000);
         this.getAllTask();
       }
-      ,
+        ,
         err => {
           this.toastr.error('Something went wrong', 'Main error', {
             timeOut: 3000,
@@ -123,25 +123,25 @@ export class DashboardComponent implements OnInit {
         })
 
   }
-  getAllTask() {
+  getAllTask():void {
     this.dashboardService.getTask()
       .subscribe(res => {
         this.taskData = res;
-        for(let task of this.taskData){
-          this.taskDate= formatDate(task.dateTime,'yyyy-M-d','en_US');
-          if(this.taskDate == this.currentDate){
+        for (let task of this.taskData) {
+          this.taskDate = formatDate(task.dateTime, 'yyyy-M-d', 'en_US');
+          if (this.taskDate == this.currentDate) {
             this.todayTask++;
           }
-         if(this.taskDate > this.currentDate){
+          if (this.taskDate > this.currentDate) {
             this.commingTask++;
           }
-         if(this.taskDate < this.currentDate){
+          if (this.taskDate < this.currentDate) {
             this.overDueTask++;
           }
         }
       })
   }
-  deleteTask(row:number){
+  deleteTask(row: number){
     this.dashboardService.deleteTask(row)
       .subscribe(res => {
         this.toastr.success('Task Deleted Successfully');
@@ -151,7 +151,7 @@ export class DashboardComponent implements OnInit {
         this.getAllTask();
       })
   }
-  loggedOut() {
+  loggedOut():void{
     this.authService.logout();
   }
 }
