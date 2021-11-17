@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
   formValue !: FormGroup;
   listModelObj: ListNameModel = new ListNameModel();
   taskModelObj: TaskModel = new TaskModel();
-  listData !: any;
-  taskData !: any;
+  listData !:ListNameModel[];
+  taskData !: TaskModel[];
 
   priorityList = [
     { id: 1, name: 'High' },

@@ -1,8 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
-import { CreateAccountModel } from "../signup/signup.model";
+import { User } from "../signup/signup.model";
 import { ResetPasswordModel } from "../reset-password/reset-password.model";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -10,9 +11,9 @@ import { ResetPasswordModel } from "../reset-password/reset-password.model";
 export class SignupService {
   constructor(private http: HttpClient) {}
 
-  postSignup(data: CreateAccountModel) {
+  postSignup(data: User):Observable<User> {
     return this.http
-      .post("https://617b7a78d842cf001711befc.mockapi.io/signup", data)
+      .post<User>("https://617b7a78d842cf001711befc.mockapi.io/signup", data)
       .pipe(
         map((res) => {
           return res;
@@ -20,18 +21,18 @@ export class SignupService {
       );
   }
 
-  getSignup() {
+  getSignup():Observable<User[]> {
     return this.http
-      .get("https://617b7a78d842cf001711befc.mockapi.io/signup")
+      .get<User[]>("https://617b7a78d842cf001711befc.mockapi.io/signup")
       .pipe(
-        map((res: any) => {
+        map((res) => {
           return res;
         })
       );
   }
-  postResetPassword(data: ResetPasswordModel) {
+  postResetPassword(data: ResetPasswordModel):Observable<ResetPasswordModel> {
     return this.http
-      .post("https://617b7a78d842cf001711befc.mockapi.io/resetpassword", data)
+      .post<ResetPasswordModel>("https://617b7a78d842cf001711befc.mockapi.io/resetpassword", data)
       .pipe(
         map((res) => {
           return res;

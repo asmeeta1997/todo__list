@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder, NgForm } from '@angula
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SignupService } from '../services/signup.service';
-import { CreateAccountModel } from './signup.model';
+import { User } from './signup.model';
 
 @Component({
   selector: 'app-create-account',
@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   public createAccount !: FormGroup;
   submit: boolean = false;
 
-  createAccountModelObj: CreateAccountModel = new CreateAccountModel();
+  createAccountModelObj: User = new User();
 
   constructor(
     private formBuilder: FormBuilder,

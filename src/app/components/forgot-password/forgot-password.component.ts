@@ -1,4 +1,3 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
@@ -35,7 +34,6 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
     private router: Router,
     private toastr: ToastrService,
     private signupService: SignupService
@@ -64,7 +62,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.signupService.getSignup()
     .subscribe(
       (res) => {
-        const user = res.find((a: any) => {
+        const user = res.find((a) => {
           return a.email === this.passwordforgot.value.email;
         });
         if (user) {

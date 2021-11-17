@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'
 import { AuthService } from '../services/auth.service';
 import { SignupService } from '../services/signup.service';
+import { User } from '../signup/signup.model';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   public loginForm !: FormGroup;
   submit: boolean = false;
   isLoginMode = true;
-  authResponse=[];
+  authResponse!:User[];
   users = "token";
   hide= true;
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   get f() {
-    return this.loginForm.controls 
+    return this.loginForm.controls
   }
 
   ngOnInit(): void {
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
   loggedIn():void{
     this.signupService.getSignup()
       .subscribe(res =>{
-        const user = res.find((a:any)=>{
+        const user = res.find((a)=>{
           return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
         });
         this.authResponse = res;

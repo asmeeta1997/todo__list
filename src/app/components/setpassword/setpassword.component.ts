@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CreateAccountModel } from '../signup/signup.model';
+import { User } from '../signup/signup.model';
 import { SignupService } from '../services/signup.service';
 import { MustMatchPassword } from '../validators/mustMatchPassword';
 @Component({
@@ -21,7 +20,7 @@ export class SetpasswordComponent implements OnInit {
   hide = true;
   hide2=true;
 
-  createAccountModelObj:CreateAccountModel = new CreateAccountModel();
+  createAccountModelObj:User = new User();
 
 
   get f() {
