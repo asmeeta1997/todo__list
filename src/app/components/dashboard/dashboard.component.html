@@ -375,7 +375,6 @@
                   <mat-panel-title>
                     <div class="d-flex align-items-baseline">
                       <p>{{ list.listname }}</p>
-                      <!-- <h6>{{ commingTask}}</h6> -->
                     </div>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
@@ -400,14 +399,14 @@
                                 class="form-check-label"
                                 for="flexCheckChecked2"
                               >
-                                <div class="text-capitalize">
+                                <div class="taskname-css-demo">
                                   {{ row.taskname }}
                                 </div>
                               </label>
                             </div>
                           </td>
                           <td>
-                            <div class="priority-custom-css mt-0">
+                            <div class="priority-custom-css priority-custom-css2 mt-0">
                               <span
                                 class="priority-custom-css-inside"
                                 [ngClass]="{
@@ -420,7 +419,7 @@
                             </div>
                           </td>
                           <td>
-                            <div class="text-end">
+                            <div class="text-align-date">
                               {{ row.dateTime | date: "d MMMM h:mm a" }}
                             </div>
                           </td>

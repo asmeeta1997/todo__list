@@ -97,7 +97,9 @@
         margin-top: 20px;
         padding: 10px 20px;
         background-color: $white;
-
+        .taskname-css-demo{
+            width: 150px;
+        }
         .form-check {
             display: flex;
             align-items: center;
@@ -115,6 +117,13 @@
 
         .form-check-input:checked {
             background-color: $color-primary;
+        }
+        .text-align-date{
+            text-align: end;
+            @include sm{
+                text-align:center;
+                font-size: 13px;
+            }
         }
 
         .inner-checkbox-chooselist-p {
@@ -154,6 +163,9 @@
                 padding: 8px;
                 border-radius: 6px;
             }
+        }
+        .priority-custom-css2{
+            text-align: start;
         }
 
         .myclasshigh {

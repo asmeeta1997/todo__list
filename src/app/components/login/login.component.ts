@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   hide= true;
 
 
-  onSwitchMode(){
+  onSwitchMode():void{
     this.isLoginMode=!this.isLoginMode;
   }
   constructor(
@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
     private signupService: SignupService
   ) { }
 
-  get f() {
-    return this.loginForm.controls
+  get loginFormController() {
+    return this.loginForm.controls;
   }
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl("", [Validators.required, Validators.minLength(8)])
     })
     if(this.auth.logintoken()) {
-      this.router.navigate(['home'])
+      this.router.navigate(['login']);
     }
   }
   onSubmit(form:NgForm):void {
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("SessionUser", this.users);
           this.toastr.success('Login Successfully');
           this.loginForm.reset();
-          this.router.navigate(['home'])
+          this.router.navigate(['home']);
         }
         else{
           this.toastr.error('Email or Password incorrect','',{

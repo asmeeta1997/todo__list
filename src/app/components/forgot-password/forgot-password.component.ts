@@ -23,13 +23,13 @@ export class ForgotPasswordComponent implements OnInit {
   forgetImage = "../../../assets/images/forgetpassword.png";
   forgetImg = "Forget Image";
   emailimage = "../../../assets/images/emailsend1.png";
-  emailimagealt="Email Send";
+  emailimagealt = "Email Send";
   submit: boolean = false;
 
-  public passwordforgot!: FormGroup;
+  public passwordForgot!: FormGroup;
 
-  get f() {
-    return this.passwordforgot.controls;
+  get passwordForgotFormController() {
+    return this.passwordForgot.controls;
   }
 
   constructor(
@@ -42,8 +42,8 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForgotPassword();
   }
-  initializeForgotPassword():void{
-    this.passwordforgot = this.formBuilder.group({
+  initializeForgotPassword(): void {
+    this.passwordForgot = this.formBuilder.group({
       email: new FormControl("", [
         Validators.required,
         Validators.email,
@@ -52,22 +52,21 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-  forgotPassword(form: NgForm):void {
+  forgotPassword(form: NgForm): void {
     this.submit = true;
-    if (this.passwordforgot.invalid) {
+    if (this.passwordForgot.invalid) {
       return;
     }
   }
-  sendEmail():void{
-    this.signupService.getSignup()
-    .subscribe(
+  sendEmail(): void {
+    this.signupService.getSignup().subscribe(
       (res) => {
         const user = res.find((a) => {
-          return a.email === this.passwordforgot.value.email;
+          return a.email === this.passwordForgot.value.email;
         });
         if (user) {
           this.router.navigate(["/"]);
-          this.passwordforgot.reset();
+          this.passwordForgot.reset();
         } else {
           this.toastr.error("Incorrect Email", "", {
             timeOut: 3000,
@@ -80,6 +79,5 @@ export class ForgotPasswordComponent implements OnInit {
         });
       }
     );
-
   }
 }

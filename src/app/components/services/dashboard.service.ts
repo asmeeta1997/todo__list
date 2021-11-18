@@ -37,14 +37,14 @@ export class DashboardService {
 
   //for list name api call
 
-  postList(data: ListNameModel):Observable<ListNameModel> {
+  postListName(data: ListNameModel):Observable<ListNameModel> {
     return this.http.post<ListNameModel>("https://617b7a78d842cf001711befc.mockapi.io/listNames", data)
       .pipe(map((res) => {
         return res ;
       })
       );
   }
-  getList():Observable<ListNameModel[]> {
+  getListName():Observable<ListNameModel[]> {
     return this.http.get<ListNameModel[]>("https://617b7a78d842cf001711befc.mockapi.io/listNames")
       .pipe(map((res) => {
         return res;

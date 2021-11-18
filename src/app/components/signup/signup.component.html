@@ -11,9 +11,8 @@
             </div>
             <div>
               <form
-                #accountCreate="ngForm"
                 [formGroup]="createAccount"
-                (ngSubmit)="signUp(accountCreate.value)"
+                (ngSubmit)="signUp(createAccount.value)"
               >
                 <div class="mb-3">
                   <label for="name" class="form-label">Full Name</label>
@@ -28,15 +27,15 @@
                     />
                     <i class="fas fa-user main-icon-form-inner"></i>
                   </div>
-                  <div *ngIf="submit && f.fullname.errors">
+                  <div *ngIf="submit && signUpFormController.fullname.errors">
                     <p
-                      *ngIf="f.fullname.errors.required"
+                      *ngIf="signUpFormController.fullname.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
-                      *ngIf="f.fullname.errors.minlength"
+                      *ngIf="signUpFormController.fullname.errors.minlength"
                       class="error-in-validation"
                     >
                       Name shoule be more than 4 letters
@@ -89,9 +88,9 @@
                     />
                     <!-- <i class="fas fa-calendar-week main-icon-form-inner"></i> -->
                   </div>
-                  <div *ngIf="submit && f.date.errors">
+                  <div *ngIf="submit && signUpFormController.date.errors">
                     <p
-                      *ngIf="f.date.errors.required"
+                      *ngIf="signUpFormController.date.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
@@ -113,15 +112,15 @@
                       <i class="fas fa-phone-alt main-icon-form-inner"></i>
                     </div>
                   </div>
-                  <div *ngIf="submit && f.phonenumber.errors">
+                  <div *ngIf="submit && signUpFormController.phonenumber.errors">
                     <p
-                      *ngIf="f.phonenumber.errors.required"
+                      *ngIf="signUpFormController.phonenumber.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
-                      *ngIf="f.phonenumber.errors.pattern"
+                      *ngIf="signUpFormController.phonenumber.errors.pattern"
                       class="error-in-validation"
                     >
                       Invalid phone number.
@@ -154,15 +153,15 @@
                     ></i>
                     <i class="fas fa-envelope main-icon-form-inner"></i>
                   </div>
-                  <div *ngIf="submit && f.email.errors">
+                  <div *ngIf="submit && signUpFormController.email.errors">
                     <p
-                      *ngIf="f.email.errors.required"
+                      *ngIf="signUpFormController.email.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
-                      *ngIf="f.email.errors.pattern"
+                      *ngIf="signUpFormController.email.errors.pattern"
                       class="error-in-validation"
                     >
                       Email must be a valid

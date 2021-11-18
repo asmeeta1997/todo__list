@@ -11,8 +11,7 @@
             </div>
             <div>
               <form
-                #authForm="ngForm"
-                (ngSubmit)="onSubmit(authForm.value)"
+                (ngSubmit)="onSubmit(loginForm.value)"
                 [formGroup]="loginForm"
                 name="loginForm"
               >
@@ -43,16 +42,16 @@
                     ></i>
                     <i class="fas fa-envelope main-icon-form-inner"></i>
                   </div>
-                  <div *ngIf="submit && f.email.errors">
+                  <div *ngIf="submit && loginFormController.email.errors">
                     <p
-                      *ngIf="f.email.errors.required"
+                      *ngIf="loginFormController.email.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
 
                     <p
-                      *ngIf="f.email.errors.pattern"
+                      *ngIf="loginFormController.email.errors.pattern"
                       class="error-in-validation"
                     >
                       Email must be a valid
@@ -80,15 +79,15 @@
                     </i>
                     <i class="fas fa-lock main-icon-form-inner"></i>
                   </div>
-                  <div *ngIf="submit && f.password.errors">
+                  <div *ngIf="submit && loginFormController.password.errors">
                     <p
-                      *ngIf="f.password.errors.required"
+                      *ngIf="loginFormController.password.errors.required"
                       class="error-in-validation"
                     >
                       Field is Required !
                     </p>
                     <p
-                      *ngIf="f.password.errors.minlength"
+                      *ngIf="loginFormController.password.errors.minlength"
                       class="error-in-validation"
                     >
                       Must be atleast 8 characters!
