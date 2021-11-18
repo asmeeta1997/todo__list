@@ -8,6 +8,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { AuthService } from "../services/auth.service";
 import { SignupService } from "../services/signup.service";
 import { MustMatchPassword } from "../validators/mustMatchPassword";
 import { ResetPasswordModel } from "./reset-password.model";
@@ -37,8 +38,9 @@ export class ResetPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
-    private signupService: SignupService
-  ) {}
+    private signupService: SignupService,
+    private auth: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.initializeResetPassword();
@@ -51,10 +53,12 @@ export class ResetPasswordComponent implements OnInit {
         Validators.minLength(8),
       ]),
       confirmpassword: new FormControl("", [Validators.required]),
-    });
-    this.resetPassword = this.formBuilder.group({
+    }, {
       validators: MustMatchPassword("password", "confirmpassword"),
     });
+    if (this.auth.logintoken()) {
+      this.router.navigate(['home'])
+    }
   }
 
   passwordReset(form: NgForm): void {

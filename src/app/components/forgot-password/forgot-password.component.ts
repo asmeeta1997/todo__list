@@ -8,6 +8,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { AuthService } from "../services/auth.service";
 import { SignupService } from "../services/signup.service";
 
 @Component({
@@ -36,7 +37,8 @@ export class ForgotPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
-    private signupService: SignupService
+    private signupService: SignupService,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +52,9 @@ export class ForgotPasswordComponent implements OnInit {
         Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$"),
       ]),
     });
+    if(this.auth.logintoken()) {
+      this.router.navigate(['home'])
+    }
   }
 
   forgotPassword(form: NgForm): void {

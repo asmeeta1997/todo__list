@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl("", [Validators.required, Validators.minLength(8)])
     })
     if(this.auth.logintoken()) {
-      this.router.navigate(['login']);
+      this.router.navigate(['home'])
     }
   }
   onSubmit(form:NgForm):void {

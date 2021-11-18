@@ -8,6 +8,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { AuthService } from "../services/auth.service";
 import { SignupService } from "../services/signup.service";
 import { User } from "./signup.model";
 
@@ -29,7 +30,9 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private signupService: SignupService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private auth: AuthService
+
   ) {}
 
   get signUpFormController() {
@@ -56,6 +59,9 @@ export class SignupComponent implements OnInit {
         Validators.pattern("[0-9 ]{10}"),
       ]),
     });
+    if(this.auth.logintoken()) {
+      this.router.navigate(['home'])
+    }
   }
 
   signUp(form: NgForm): void {

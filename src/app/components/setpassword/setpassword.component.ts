@@ -11,6 +11,7 @@ import { ToastrService } from "ngx-toastr";
 import { User } from "../signup/signup.model";
 import { SignupService } from "../services/signup.service";
 import { MustMatchPassword } from "../validators/mustMatchPassword";
+import { AuthService } from "../services/auth.service";
 @Component({
   selector: "app-setpassword",
   templateUrl: "./setpassword.component.html",
@@ -36,8 +37,9 @@ export class SetpasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
-    private signupService: SignupService
-  ) {}
+    private signupService: SignupService,
+    private auth: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.initializeSetPassword();
@@ -50,10 +52,12 @@ export class SetpasswordComponent implements OnInit {
         Validators.minLength(8),
       ]),
       confirmpassword: new FormControl("", [Validators.required]),
-    });
-    this.setPassword = this.formBuilder.group({
+    }, {
       validators: MustMatchPassword("password", "confirmpassword"),
     });
+    if (this.auth.logintoken()) {
+      this.router.navigate(['home'])
+    }
   }
 
   signUp(form: NgForm): void {
