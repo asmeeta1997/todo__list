@@ -65,12 +65,13 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(form: NgForm): void {
+    this.createAccounts();
+  }
+  createAccounts(): void {
     this.submit = true;
     if (this.createAccount.invalid) {
       return;
     }
-  }
-  createAccounts(): void {
     this.createAccountModelObj.fullname = this.createAccount.value.fullname;
     this.createAccountModelObj.date = this.createAccount.value.date;
     this.createAccountModelObj.phonenumber =
@@ -78,8 +79,8 @@ export class SignupComponent implements OnInit {
     this.createAccountModelObj.email = this.createAccount.value.email;
     this.signupService.postSignup(this.createAccountModelObj).subscribe(
       (res) => {
-        this.createAccount.reset();
         this.router.navigate(["set-password"]);
+        this.createAccount.reset();
       },
       (err) => {
         this.toastr.error("Something went wrong", "Main error", {
