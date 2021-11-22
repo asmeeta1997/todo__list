@@ -382,7 +382,7 @@
                   <div class="table-responsive" *ngFor="let task of taskData">
                     <table
                       class="table"
-                      *ngIf="list.listname === task.chooselist; else loggedOut"
+                      *ngIf="list.listname === task.chooselist; else emptyAccordion"
                     >
                       <tbody>
                         <tr>
@@ -426,7 +426,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <ng-template #loggedOut>
+                    <ng-template #emptyAccordion>
                       <div class="empty-accordion-css">
                         <p>List is empty.</p>
                       </div>
