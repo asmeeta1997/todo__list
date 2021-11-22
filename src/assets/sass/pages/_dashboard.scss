@@ -94,6 +94,16 @@
         margin-top: 20px;
         padding: 10px 20px;
         background-color: $white;
+        .table > :not(:first-child){
+            border-top:none;
+        }
+        .empty-accordion-css{
+            p{
+                color:$color-accent-3;
+                margin:0;   
+                font-weight: 500;
+            }
+        }
         .taskname-css-demo{
             width: 150px;
         }
@@ -148,13 +158,6 @@
                 }
                 p{
                     text-transform: capitalize;
-                }
-            }
-            .empty-accordion-css{
-                p{
-                    color:$color-accent-3;
-                    margin:0;   
-                    font-weight: 500;
                 }
             }
         }

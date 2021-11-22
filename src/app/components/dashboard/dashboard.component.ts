@@ -126,6 +126,7 @@ export class DashboardComponent implements OnInit {
   getAllTask(): void {
     this.dashboardService.getTask().subscribe((res) => {
       this.taskData = res;
+      console.log(this.taskData)
       for (let task of this.taskData) {
         this.taskDate = formatDate(task.dateTime, "yyyy-M-d", "en_US");
         if (this.taskDate == this.currentDate) {

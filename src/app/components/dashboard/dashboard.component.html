@@ -247,9 +247,9 @@
         <div class="main-table-inner-dashboard m-t25">
           <div class="table-responsive">
             <table class="table m-0">
-              <tbody>
-                <tr *ngFor="let task of taskData">
-                  <td *ngIf="(task.dateTime | date: 'yyyy-M-d') == currentDate">
+              <tbody *ngFor="let task of taskData">
+                <tr *ngIf="(task.dateTime | date: 'yyyy-M-d') == currentDate; else todayTaskEmpty">
+                  <td>
                     <div class="form-check">
                       <input
                         class="form-check-input custom-form-check"
@@ -268,7 +268,7 @@
                       </label>
                     </div>
                   </td>
-                  <td *ngIf="(task.dateTime | date: 'yyyy-M-d') == currentDate">
+                  <td>
                     <div class="priority-custom-css">
                       <span
                         class="priority-custom-css-inside"
@@ -282,6 +282,11 @@
                     </div>
                   </td>
                 </tr>
+                <ng-template #todayTaskEmpty>
+                  <div class="empty-accordion-css">
+                    <p>List is empty.</p>
+                  </div>
+                </ng-template>
               </tbody>
             </table>
           </div>
