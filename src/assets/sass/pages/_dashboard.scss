@@ -1,12 +1,9 @@
 .section-dashboard {
-
+    background-color:$background-color-dashboard;
     .navbar>.container,
     .navbar>.container-fluid {
         align-items: baseline;
     }
-
-    background-color:$background-color-dashboard;
-
     .main-home {
         h3 {
             color: $color-primary;
@@ -194,5 +191,7 @@
     .mat-expansion-panel-body{
         padding:0;
     }
-
+    .inner-class-select option{
+        text-transform: capitalize;
+    }
 }

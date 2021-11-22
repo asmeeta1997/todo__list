@@ -105,7 +105,7 @@
                               >Choose list</label
                             >
                             <select
-                              class="form-select"
+                              class="form-select inner-class-select"
                               id="chooselist"
                               aria-label="Default select example"
                               formControlName="chooselist"
@@ -244,40 +244,40 @@
           <h6>Today's task</h6>
           <p>{{ todayTask }}</p>
         </div>
-        <div class="main-table-inner-dashboard">
+        <div class="main-table-inner-dashboard m-t25">
           <div class="table-responsive">
-            <table class="table">
+            <table class="table m-0">
               <tbody>
-                <tr *ngFor="let row of taskData">
-                  <td *ngIf="(row.dateTime | date: 'yyyy-M-d') == currentDate">
+                <tr *ngFor="let task of taskData">
+                  <td *ngIf="(task.dateTime | date: 'yyyy-M-d') == currentDate">
                     <div class="form-check">
                       <input
                         class="form-check-input custom-form-check"
                         type="checkbox"
                         value=""
                         id="flexCheckChecked"
-                        (click)="deleteTask(row.id)"
+                        (click)="deleteTask(task.id)"
                       />
                       <label class="form-check-label custom-form-check_label">
-                        <div class="text-capitalize">{{ row.taskname }}</div>
+                        <div class="text-capitalize">{{ task.taskname }}</div>
                         <div>
                           <p class="inner-checkbox-chooselist-p">
-                            {{ row.chooselist }}
+                            {{ task.chooselist }}
                           </p>
                         </div>
                       </label>
                     </div>
                   </td>
-                  <td *ngIf="(row.dateTime | date: 'yyyy-M-d') == currentDate">
+                  <td *ngIf="(task.dateTime | date: 'yyyy-M-d') == currentDate">
                     <div class="priority-custom-css">
                       <span
                         class="priority-custom-css-inside"
                         [ngClass]="{
-                          myclasshigh: row.choosepriority === 'High',
-                          myclasslow: row.choosepriority === 'Low',
-                          myclassmedium: row.choosepriority === 'Medium'
+                          myclasshigh: task.choosepriority === 'High',
+                          myclasslow: task.choosepriority === 'Low',
+                          myclassmedium: task.choosepriority === 'Medium'
                         }"
-                        >{{ row.choosepriority }}</span
+                        >{{ task.choosepriority }}</span
                       >
                     </div>
                   </td>
@@ -379,10 +379,10 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="main-table-inner-dashboard">
-                  <div class="table-responsive" *ngFor="let row of taskData">
+                  <div class="table-responsive" *ngFor="let task of taskData">
                     <table
                       class="table"
-                      *ngIf="list.listname === row.chooselist"
+                      *ngIf="list.listname === task.chooselist"
                     >
                       <tbody>
                         <tr>
@@ -393,14 +393,14 @@
                                 type="checkbox"
                                 value=""
                                 id="flexCheckChecked2"
-                                (click)="deleteTask(row.id)"
+                                (click)="deleteTask(task.id)"
                               />
                               <label
                                 class="form-check-label"
                                 for="flexCheckChecked2"
                               >
                                 <div class="taskname-css-demo">
-                                  {{ row.taskname }}
+                                  {{ task.taskname }}
                                 </div>
                               </label>
                             </div>
@@ -410,17 +410,17 @@
                               <span
                                 class="priority-custom-css-inside"
                                 [ngClass]="{
-                                  myclasshigh: row.choosepriority == 'High',
-                                  myclasslow: row.choosepriority == 'Low',
-                                  myclassmedium: row.choosepriority == 'Medium'
+                                  myclasshigh: task.choosepriority == 'High',
+                                  myclasslow: task.choosepriority == 'Low',
+                                  myclassmedium: task.choosepriority == 'Medium'
                                 }"
-                                >{{ row.choosepriority }}</span
+                                >{{ task.choosepriority }}</span
                               >
                             </div>
                           </td>
                           <td>
                             <div class="text-align-date">
-                              {{ row.dateTime | date: "d MMMM h:mm a" }}
+                              {{ task.dateTime | date: "d MMMM h:mm a" }}
                             </div>
                           </td>
                         </tr>

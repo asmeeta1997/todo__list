@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'forget-password', component: ForgotPasswordComponent },
-  { path: 'create-account', component: SignupComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'home', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'set-password', component: SetpasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },

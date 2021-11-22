@@ -75,12 +75,12 @@ export class SignupComponent implements OnInit {
     this.createAccountModelObj.fullname = this.createAccount.value.fullname;
     this.createAccountModelObj.date = this.createAccount.value.date;
     this.createAccountModelObj.phonenumber =
-      this.createAccount.value.phonenumber;
+    this.createAccount.value.phonenumber;
     this.createAccountModelObj.email = this.createAccount.value.email;
     this.signupService.postSignup(this.createAccountModelObj).subscribe(
-      (res) => {
-        this.router.navigate(["set-password"]);
+      () => {
         this.createAccount.reset();
+        this.router.navigate(["set-password"]);
       },
       (err) => {
         this.toastr.error("Something went wrong", "Main error", {
