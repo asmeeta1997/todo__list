@@ -150,6 +150,13 @@
                     text-transform: capitalize;
                 }
             }
+            .empty-accordion-css{
+                p{
+                    color:$color-accent-3;
+                    margin:0;   
+                    font-weight: 500;
+                }
+            }
         }
 
         .priority-custom-css {
