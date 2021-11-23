@@ -151,10 +151,6 @@
 
   }
 }
-
-//error message css
-
-
 .ng-submitted {
   input {
     border: 1px solid $color-primary;
@@ -169,6 +165,7 @@
 .form-control.ng-touched.ng-valid {
   border: 1px solid $color-accent-6;
 }
-.m-t25{
-  margin-top: 25px!important;
+
+.m-t25 {
+  margin-top: 25px !important;
 }

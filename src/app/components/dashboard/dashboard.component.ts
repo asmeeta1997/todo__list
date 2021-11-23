@@ -30,6 +30,9 @@ export class DashboardComponent implements OnInit {
   taskModelObj: TaskModel = new TaskModel();
   listData!: ListNameModel[];
   taskData!: TaskModel[];
+  listTotalCount: number|any = [];
+  countList:number=0;
+  countTask:number=0;
 
   priorityList = [
     { id: 1, name: "High" },
@@ -42,6 +45,7 @@ export class DashboardComponent implements OnInit {
   todayTask: number = 0;
   commingTask: number = 0;
   overDueTask: number = 0;
+  totalCountTask: number = 0;
   currentDate = formatDate(new Date(), "yyyy-M-d", "en_US");
 
   constructor(
@@ -54,6 +58,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.initializeListName();
     this.initializeTaskList();
+    this.totalCount();
   }
 
   initializeListName(): void {
@@ -81,8 +86,11 @@ export class DashboardComponent implements OnInit {
     this.listModelObj.listname = this.formList.value.listname;
     this.dashboardService.postListName(this.listModelObj).subscribe(
       (res) => {
-        this.toastr.success("List Added Successfully");
         this.formList.reset();
+        this.toastr.success("List Added Successfully");
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
         this.getAllListName();
       },
       (err) => {
@@ -109,11 +117,11 @@ export class DashboardComponent implements OnInit {
     this.taskModelObj.dateTime = this.formValue.value.dateTime;
     this.dashboardService.postTask(this.taskModelObj).subscribe(
       (res) => {
-        this.toastr.success("Task Added Successfully");
         this.formValue.reset();
+        this.toastr.success("Task Added Successfully");
         setTimeout(() => {
           location.reload();
-        }, 2000);
+        }, 1000);
         this.getAllTask();
       },
       (err) => {
@@ -126,7 +134,6 @@ export class DashboardComponent implements OnInit {
   getAllTask(): void {
     this.dashboardService.getTask().subscribe((res) => {
       this.taskData = res;
-      console.log(this.taskData)
       for (let task of this.taskData) {
         this.taskDate = formatDate(task.dateTime, "yyyy-M-d", "en_US");
         if (this.taskDate == this.currentDate) {
@@ -148,6 +155,25 @@ export class DashboardComponent implements OnInit {
         location.reload();
       }, 1000);
       this.getAllTask();
+    });
+  }
+  totalCount(){
+    this.dashboardService.getTask().subscribe((TaskModel) => {
+      this.taskData = TaskModel;
+      this.dashboardService.getListName().subscribe((ListNameModel) => {
+        this.listData = ListNameModel;
+        for(let list of this.listData){
+          this.countList=0;
+          for(let task of this.taskData){
+            this.countTask=0;
+            if(list.listname === task.chooselist){
+              this.countTask++;
+            }
+            this.countList = this.countList+this.countTask;
+          }
+          this.listTotalCount.push(this.countList);
+        }
+      });
     });
   }
   loggedOut(): void {

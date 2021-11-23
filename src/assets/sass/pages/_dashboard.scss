@@ -1,9 +1,12 @@
 .section-dashboard {
-    background-color:$background-color-dashboard;
+    background-color: $background-color-dashboard;
+    padding-bottom: 5%;
+
     .navbar>.container,
     .navbar>.container-fluid {
         align-items: baseline;
     }
+
     .main-home {
         h3 {
             color: $color-primary;
@@ -94,19 +97,24 @@
         margin-top: 20px;
         padding: 10px 20px;
         background-color: $white;
-        .table > :not(:first-child){
-            border-top:none;
+        max-height: 250px;
+        overflow: auto;
+
+        .table> :not(:first-child) {
+            border-top: none;
         }
-        .empty-accordion-css{
-            p{
-                color:$color-accent-3;
-                margin:0;   
+        .empty-accordion-css {
+            p {
+                color: $color-accent-3;
+                margin: 0;
                 font-weight: 500;
             }
         }
-        .taskname-css-demo{
+
+        .taskname-css-demo {
             width: 150px;
         }
+
         .form-check {
             display: flex;
             align-items: center;
@@ -125,10 +133,12 @@
         .form-check-input:checked {
             background-color: $color-primary;
         }
-        .text-align-date{
+
+        .text-align-date {
             text-align: end;
-            @include sm{
-                text-align:center;
+
+            @include sm {
+                text-align: center;
                 font-size: 13px;
             }
         }
@@ -156,7 +166,8 @@
                     margin: 0 10px;
                     font-size: 13px;
                 }
-                p{
+
+                p {
                     text-transform: capitalize;
                 }
             }
@@ -171,7 +182,8 @@
                 border-radius: 6px;
             }
         }
-        .priority-custom-css2{
+
+        .priority-custom-css2 {
             text-align: start;
         }
 
@@ -198,10 +210,12 @@
         font-size: 20px;
         font-weight: 550;
     }
-    .mat-expansion-panel-body{
-        padding:0;
+
+    .mat-expansion-panel-body {
+        padding: 0;
     }
-    .inner-class-select option{
+
+    .inner-class-select option {
         text-transform: capitalize;
     }
 }

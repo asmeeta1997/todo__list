@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
     private toastr: ToastrService,
     private auth: AuthService
 
-  ) {}
+  ) { }
 
   get signUpFormController() {
     return this.createAccount.controls;
@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit {
         Validators.pattern("[0-9 ]{10}"),
       ]),
     });
-    if(this.auth.logintoken()) {
+    if (this.auth.logintoken()) {
       this.router.navigate(['home'])
     }
   }
@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
     this.createAccountModelObj.fullname = this.createAccount.value.fullname;
     this.createAccountModelObj.date = this.createAccount.value.date;
     this.createAccountModelObj.phonenumber =
-    this.createAccount.value.phonenumber;
+      this.createAccount.value.phonenumber;
     this.createAccountModelObj.email = this.createAccount.value.email;
     this.signupService.postSignup(this.createAccountModelObj).subscribe(
       () => {

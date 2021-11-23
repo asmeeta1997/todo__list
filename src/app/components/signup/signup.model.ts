@@ -4,5 +4,5 @@ export class User {
     email: string = "";
     date: string = "";
     phonenumber: string = "";
-    password:string="";
+    password: string = "";
 }
