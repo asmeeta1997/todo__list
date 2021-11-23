@@ -85,7 +85,7 @@ export class DashboardComponent implements OnInit {
     }
     this.listModelObj.listname = this.formList.value.listname;
     this.dashboardService.postListName(this.listModelObj).subscribe(
-      (res) => {
+      () => {
         this.formList.reset();
         this.toastr.success("List Added Successfully");
         setTimeout(() => {
@@ -101,8 +101,8 @@ export class DashboardComponent implements OnInit {
     );
   }
   getAllListName(): void {
-    this.dashboardService.getListName().subscribe((res) => {
-      this.listData = res;
+    this.dashboardService.getListName().subscribe((ListNameModel) => {
+      this.listData = ListNameModel;
     });
   }
 
@@ -116,7 +116,7 @@ export class DashboardComponent implements OnInit {
     this.taskModelObj.choosepriority = this.formValue.value.choosepriority;
     this.taskModelObj.dateTime = this.formValue.value.dateTime;
     this.dashboardService.postTask(this.taskModelObj).subscribe(
-      (res) => {
+      () => {
         this.formValue.reset();
         this.toastr.success("Task Added Successfully");
         setTimeout(() => {
@@ -132,11 +132,11 @@ export class DashboardComponent implements OnInit {
     );
   }
   getAllTask(): void {
-    this.dashboardService.getTask().subscribe((res) => {
-      this.taskData = res;
+    this.dashboardService.getTask().subscribe((TaskModel) => {
+      this.taskData = TaskModel;
       for (let task of this.taskData) {
         this.taskDate = formatDate(task.dateTime, "yyyy-M-d", "en_US");
-        if (this.taskDate == this.currentDate) {
+        if (this.taskDate === this.currentDate) {
           this.todayTask++;
         }
         if (this.taskDate > this.currentDate) {
@@ -149,17 +149,17 @@ export class DashboardComponent implements OnInit {
     });
   }
   deleteTask(row: number): void {
-    this.dashboardService.deleteTask(row).subscribe((res) => {
+    this.dashboardService.deleteTask(row).subscribe(() => {
       this.toastr.success("Task Deleted Successfully");
+      this.getAllTask();
       setTimeout(() => {
         location.reload();
       }, 1000);
-      this.getAllTask();
     });
   }
   totalCount(){
-    this.dashboardService.getTask().subscribe((TaskModel) => {
-      this.taskData = TaskModel;
+    this.dashboardService.getTask().subscribe((res) => {
+      this.taskData = res;
       this.dashboardService.getListName().subscribe((ListNameModel) => {
         this.listData = ListNameModel;
         for(let list of this.listData){

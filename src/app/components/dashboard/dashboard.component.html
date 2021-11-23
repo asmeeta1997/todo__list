@@ -167,6 +167,7 @@
                       type="submit"
                       class="btn btn-danger"
                       (click)="postTaskDetails()"
+                      data-bs-dismiss="modal"
                     >
                       Add task
                     </button>
@@ -282,7 +283,7 @@
             </table>
             <ng-template #todayTaskEmpty>
               <div class="empty-accordion-css">
-                <p>List is empty.</p>
+                <p>Task is empty.</p>
               </div>
             </ng-template>
           </div>
@@ -435,7 +436,7 @@
                   </div>
                   <ng-template #emptyAccordion>
                     <div class="empty-accordion-css">
-                      <p>List is empty.</p>
+                      <p>No data available.</p>
                     </div>
                   </ng-template>
                 </div>
