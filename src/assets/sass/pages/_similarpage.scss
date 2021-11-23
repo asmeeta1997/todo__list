@@ -152,17 +152,20 @@
   }
 }
 .ng-submitted {
-  input {
+  input,select{
     border: 1px solid $color-primary;
     transition: all 0.3s ease;
   }
 }
+select{
+  text-transform: capitalize;
+}
 
-.form-control.ng-touched.ng-invalid {
+.form-control.ng-touched.ng-invalid,.form-select.ng-touched.ng-invalid {
   border: 1px solid $color-primary;
 }
 
-.form-control.ng-touched.ng-valid {
+.form-control.ng-touched.ng-valid ,.form-select.ng-touched.ng-valid{
   border: 1px solid $color-accent-6;
 }
 
