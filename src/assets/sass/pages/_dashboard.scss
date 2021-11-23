@@ -99,10 +99,20 @@
         background-color: $white;
         max-height: 250px;
         overflow: auto;
-
-        .table> :not(:first-child) {
-            border-top: none;
+        .table > :not(:first-child){
+            border-top:1px solid transparent;
         }
+        .table {
+            margin:0;
+            tr:last-child {
+                border-bottom: 1px solid transparent;
+            }
+            td{
+                display: flex;
+                justify-content:space-between;
+            }
+        }
+
         .empty-accordion-css {
             p {
                 color: $color-accent-3;
@@ -152,7 +162,6 @@
 
         .inner-expansion-accordion {
             box-shadow: none;
-
             .inner-header-accordion {
                 border-bottom: 1px solid $color-accent-5;
                 border-radius: 0;

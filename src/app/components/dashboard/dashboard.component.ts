@@ -30,17 +30,15 @@ export class DashboardComponent implements OnInit {
   taskModelObj: TaskModel = new TaskModel();
   listData!: ListNameModel[];
   taskData!: TaskModel[];
-  listTotalCount: number|any = [];
-  countList:number=0;
-  countTask:number=0;
+  listTotalCount: number | any = [];
+  countList: number = 0;
+  countTask: number = 0;
 
   priorityList = [
     { id: 1, name: "High" },
     { id: 2, name: "Medium" },
     { id: 3, name: "Low" },
   ];
-
-  // currentDate = new Date();
   taskDate: string = "";
   todayTask: number = 0;
   commingTask: number = 0;
@@ -157,19 +155,19 @@ export class DashboardComponent implements OnInit {
       }, 1000);
     });
   }
-  totalCount(){
+  totalCount() {
     this.dashboardService.getTask().subscribe((res) => {
       this.taskData = res;
       this.dashboardService.getListName().subscribe((ListNameModel) => {
         this.listData = ListNameModel;
-        for(let list of this.listData){
-          this.countList=0;
-          for(let task of this.taskData){
-            this.countTask=0;
-            if(list.listname === task.chooselist){
+        for (let list of this.listData) {
+          this.countList = 0;
+          for (let task of this.taskData) {
+            this.countTask = 0;
+            if (list.listname === task.chooselist) {
               this.countTask++;
             }
-            this.countList = this.countList+this.countTask;
+            this.countList = this.countList + this.countTask;
           }
           this.listTotalCount.push(this.countList);
         }

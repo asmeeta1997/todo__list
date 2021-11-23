@@ -80,7 +80,8 @@
                     aria-label="Close"
                   ></button>
                 </div>
-                <form [formGroup]="formValue">
+                <form #addTask="ngForm" 
+                [formGroup]="formValue">
                   <div class="modal-body">
                     <div>
                       <div class="mb-3">
@@ -168,6 +169,7 @@
                       class="btn btn-danger"
                       (click)="postTaskDetails()"
                       data-bs-dismiss="modal"
+                      [disabled]="!addTask.valid"
                     >
                       Add task
                     </button>
@@ -244,9 +246,9 @@
         <div class="main-table-inner-dashboard m-t25">
           <div class="table-responsive">
             <table class="table m-0" *ngIf="todayTask > 0; else todayTaskEmpty">
-              <tbody *ngFor="let task of taskData">
-                <tr *ngIf="(task.dateTime | date: 'yyyy-M-d') == currentDate">
-                  <td>
+              <tbody>
+                <tr *ngFor="let task of taskData">
+                  <td *ngIf="(task.dateTime | date: 'yyyy-M-d') == currentDate">
                     <div class="form-check">
                       <input
                         class="form-check-input custom-form-check"
@@ -264,8 +266,6 @@
                         </div>
                       </label>
                     </div>
-                  </td>
-                  <td>
                     <div class="priority-custom-css">
                       <span
                         class="priority-custom-css-inside"
@@ -324,7 +324,9 @@
                       aria-label="Close"
                     ></button>
                   </div>
-                  <form [formGroup]="formList">
+                  <form
+                  #addlist="ngForm" 
+                  [formGroup]="formList">
                     <div class="modal-body">
                       <div>
                         <div class="mb-3">
@@ -355,6 +357,8 @@
                         type="submit"
                         class="btn btn-danger"
                         (click)="postListnameDetails()"
+                        data-bs-dismiss="modal"
+                        [disabled]="!addlist.valid"
                       >
                         Add list
                       </button>
@@ -379,14 +383,11 @@
                 </mat-expansion-panel-header>
                 <div class="main-table-inner-dashboard">
                   <div *ngIf="listTotalCount[i] > 0; else emptyAccordion">
-                    <div class="table-responsive" *ngFor="let task of taskData">
-                      <table
-                        class="table"
-                        *ngIf="list.listname === task.chooselist"
-                      >
-                        <tbody>
-                          <tr>
-                            <td>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <tbody >
+                          <tr *ngFor="let task of taskData" >
+                            <td *ngIf="list.listname === task.chooselist">
                               <div class="form-check">
                                 <input
                                   class="form-check-input custom-form-check"
@@ -404,8 +405,6 @@
                                   </div>
                                 </label>
                               </div>
-                            </td>
-                            <td>
                               <div
                                 class="
                                   priority-custom-css priority-custom-css2
@@ -423,8 +422,6 @@
                                   >{{ task.choosepriority }}</span
                                 >
                               </div>
-                            </td>
-                            <td>
                               <div class="text-align-date">
                                 {{ task.dateTime | date: "d MMMM h:mm a" }}
                               </div>
