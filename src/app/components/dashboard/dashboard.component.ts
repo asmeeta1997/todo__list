@@ -86,9 +86,6 @@ export class DashboardComponent implements OnInit {
       () => {
         this.formList.reset();
         this.toastr.success("List Added Successfully");
-        setTimeout(() => {
-          location.reload();
-        }, 1000);
         this.getAllListName();
       },
       (err) => {
