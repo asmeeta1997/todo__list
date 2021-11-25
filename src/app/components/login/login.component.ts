@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
+import {  FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'
 import { AuthService } from '../services/auth.service';
@@ -44,8 +44,8 @@ export class LoginComponent implements OnInit {
   }
   initializeLoginForm():void{
     this.loginForm = this.formBuilder.group({
-      email: new FormControl("", [Validators.required, Validators.email,Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]),
-      password: new FormControl("", [Validators.required, Validators.minLength(8)])
+      email: ["", [Validators.required, Validators.email,Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]],
+      password: ["", [Validators.required, Validators.minLength(8)]]
     })
     if(this.auth.logintoken()) {
       this.router.navigate(['home'])

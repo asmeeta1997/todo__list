@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
   FormGroup,
-  FormControl,
   Validators,
   NgForm
 } from "@angular/forms";
@@ -39,20 +38,20 @@ export class ForgotPasswordComponent implements OnInit {
     private toastr: ToastrService,
     private signupService: SignupService,
     private auth: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initializeForgotPassword();
   }
   initializeForgotPassword(): void {
     this.passwordForgot = this.formBuilder.group({
-      email: new FormControl("", [
-        Validators.required,
+      email: ["",
+        [Validators.required,
         Validators.email,
-        Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$"),
-      ]),
+        Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]
+      ],
     });
-    if(this.auth.logintoken()) {
+    if (this.auth.logintoken()) {
       this.router.navigate(['home'])
     }
   }

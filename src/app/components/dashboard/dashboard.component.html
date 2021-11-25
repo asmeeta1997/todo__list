@@ -248,7 +248,7 @@
             <table class="table m-0" *ngIf="todayTask > 0; else todayTaskEmpty">
               <tbody>
                 <tr *ngFor="let task of taskData">
-                  <td *ngIf="(task.dateTime | date: 'yyyy-M-d') == currentDate">
+                  <td *ngIf="(task.dateTime | date: 'yyyy-M-d') === currentDate">
                     <div class="form-check">
                       <input
                         class="form-check-input custom-form-check"
@@ -413,10 +413,10 @@
                                 <span
                                   class="priority-custom-css-inside"
                                   [ngClass]="{
-                                    myclasshigh: task.choosepriority == 'High',
-                                    myclasslow: task.choosepriority == 'Low',
+                                    myclasshigh: task.choosepriority === 'High',
+                                    myclasslow: task.choosepriority === 'Low',
                                     myclassmedium:
-                                      task.choosepriority == 'Medium'
+                                      task.choosepriority === 'Medium'
                                   }"
                                   >{{ task.choosepriority }}</span
                                 >

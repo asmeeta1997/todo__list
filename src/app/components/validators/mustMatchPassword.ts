@@ -7,7 +7,7 @@ export function MustMatchPassword(controlName: string, matchingControlName: stri
     if (matchingControl.errors && !matchingControl.errors) {
       return;
     }
-    if (control.value !== matchingControl.value) {
+    if (control.value != matchingControl.value) {
       matchingControl.setErrors({ mustMatch: true })
     }
     else {

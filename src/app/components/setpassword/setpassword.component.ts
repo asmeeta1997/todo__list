@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   NgForm,
   Validators,
@@ -47,11 +46,11 @@ export class SetpasswordComponent implements OnInit {
 
   initializeSetPassword(): void {
     this.setPassword = this.formBuilder.group({
-      password: new FormControl("", [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
-      confirmpassword: new FormControl("", [Validators.required]),
+      password: ["",
+        [Validators.required,
+        Validators.minLength(8)]
+      ],
+      confirmpassword: ["", Validators.required],
     }, {
       validators: MustMatchPassword("password", "confirmpassword"),
     });

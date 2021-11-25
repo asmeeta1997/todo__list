@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import {
-  FormControl,
   FormGroup,
   Validators,
   FormBuilder,
@@ -44,20 +43,20 @@ export class SignupComponent implements OnInit {
   }
   initializeSignup(): void {
     this.createAccount = this.formBuilder.group({
-      fullname: new FormControl("", [
-        Validators.required,
-        Validators.minLength(4),
-      ]),
-      email: new FormControl("", [
-        Validators.required,
+      fullname:["",
+        [Validators.required,
+        Validators.minLength(4)]
+      ],
+      email:["",
+        [Validators.required,
         Validators.email,
-        Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$"),
-      ]),
-      date: new FormControl("", [Validators.required]),
-      phonenumber: new FormControl("", [
-        Validators.required,
-        Validators.pattern("[0-9 ]{10}"),
-      ]),
+        Validators.pattern("^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$")]
+      ],
+      date:["",Validators.required],
+      phonenumber:["",
+        [Validators.required,
+        Validators.pattern("[0-9 ]{10}")]
+      ],
     });
     if (this.auth.logintoken()) {
       this.router.navigate(['home'])

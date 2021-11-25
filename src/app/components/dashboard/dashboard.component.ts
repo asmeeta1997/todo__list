@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from "@angular/forms";
@@ -61,16 +60,16 @@ export class DashboardComponent implements OnInit {
 
   initializeListName(): void {
     this.formList = this.formBuilder.group({
-      listname: new FormControl("", [Validators.required]),
+      listname: ["", Validators.required],
     });
     this.getAllListName();
   }
   initializeTaskList(): void {
     this.formValue = this.formBuilder.group({
-      taskname: new FormControl("", [Validators.required]),
-      chooselist: new FormControl("", [Validators.required]),
-      choosepriority: new FormControl("", [Validators.required]),
-      dateTime: new FormControl("", [Validators.required]),
+      taskname: ["",Validators.required],
+      chooselist:["", Validators.required],
+      choosepriority: ["", Validators.required],
+      dateTime: ["", Validators.required],
     });
     this.getAllTask();
   }
